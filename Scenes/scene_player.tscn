@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
+extents = Vector2( 17.4563, 21.401 )
 
 [node name="player" type="Area2D"]
 
@@ -22,17 +22,17 @@ _sections_unfolded = [ "Transform" ]
 __meta__ = {
 "_edit_group_": true
 }
+moveSpeed = 400
 
 [node name="sprite" type="Sprite" parent="."]
 
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="collision_shape_2d" type="CollisionShape2D" parent="."]
 
-position = Vector2( 0.148621, -0.188599 )
-scale = Vector2( 8.8529, 10.6542 )
 shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
 
 
