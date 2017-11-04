@@ -31,5 +31,3 @@ func _process(delta):
 	pos.x = clamp(pos.x, 0, screensize.x)
 	pos.y = clamp(pos.y, 0, screensize.y)
 	set_position(pos)
-	
-	
