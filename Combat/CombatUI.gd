@@ -1,12 +1,9 @@
 extends Control
 
-var energy_bar
+var charge_label
 
 func _ready():
-	energy_bar = get_node("EnergyBar")
+	charge_label = get_node("TextureRect/Label")
 
-func set_energy(value):
-	energy_bar.value = value
-	
-func set_max_energy(value):
-	energy_bar.max_value = value
+func set_charges(value):
+	charge_label.set_text(str(value))
