@@ -1,9 +1,12 @@
 extends Control
 
-var energyBar
+var energy_bar
 
 func _ready():
-	energyBar = get_node("EnergyBar")
+	energy_bar = get_node("EnergyBar")
 
 func set_energy(value):
-	energyBar.value = value
+	energy_bar.value = value
+	
+func set_max_energy(value):
+	energy_bar.max_value = value
