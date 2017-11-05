@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Combat/CombaySystem.gd" type="Script" id=1]
+[ext_resource path="res://Combat/CombatSystem.gd" type="Script" id=1]
 
 [node name="Node" type="Node"]
 
