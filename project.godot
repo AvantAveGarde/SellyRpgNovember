@@ -14,6 +14,10 @@ config/name="SellyRPG"
 run/main_scene="res://Stages/stage_world.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+GlobalValues="*res://Scripts/GlobalValues.gd"
+
 [gdnative]
 
 singletons=[  ]
