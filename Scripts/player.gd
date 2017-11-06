@@ -1,18 +1,30 @@
-extends Area2D
+extends KinematicBody2D
 
-export var moveSpeed = 400
+export var moveSpeed = 200
 var velocity = Vector2()
-var extents
 var screensize
+
+onready var combat = get_node("CombatSystem")
+onready var sprite = get_node("PlayerSprite")
+
+var anim = "Idle"
+
+
+#Initialization
 func _ready():
 	set_process(true)
 	screensize = get_viewport_rect().size
-	extents = get_node("sprite").get_texture().get_size() / 2
-	translate(screensize / 2)
+	
 
+
+#update
 func _process(delta):
-	var input = Vector2(0, 0)
+	PlayerInput(delta)
 
+func  PlayerInput(delta):
+
+	#Input
+	var input = Vector2(0, 0)
 	if Input.is_action_pressed("ui_right"):
 		input.x = 1
 	elif Input.is_action_pressed("ui_left"):
@@ -27,7 +39,24 @@ func _process(delta):
 		input.y = 0
 	
 	velocity = input.normalized() * moveSpeed
-	var pos = get_position() + velocity * delta
-	pos.x = clamp(pos.x, 0, screensize.x)
-	pos.y = clamp(pos.y, 0, screensize.y)
-	set_position(pos)
+	
+	#attack
+	if Input.is_action_pressed("attack"):
+		combat.hold_attack(delta)
+		velocity.y = 0
+		velocity.x = 0
+		
+	if Input.is_action_just_released("attack"):
+		combat.release_attack()
+
+	#animate
+	if  velocity.y != 0:
+		anim = "Walk"
+	else:
+		anim = "Idle"
+	
+	sprite.play(anim);
+
+	
+	#Movement
+	move_and_slide(velocity)

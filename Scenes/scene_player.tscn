@@ -1,41 +1,62 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/player.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/awakening_link.png" type="Texture" id=2]
-[ext_resource path="res://Combat/CombatInput.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Sprites/awakening_link 3.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/awakening_link 2.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/awakening_link.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/attack1.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/attack2.png" type="Texture" id=6]
+[ext_resource path="res://Combat/CombatSystem.tscn" type="PackedScene" id=7]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "Attack",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 17.4563, 21.401 )
 
-[node name="player" type="Area2D"]
+[node name="player" type="KinematicBody2D"]
 
 input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
-__meta__ = {
-"_edit_group_": true
-}
-moveSpeed = 400
+moveSpeed = 200
 
-[node name="sprite" type="Sprite" parent="."]
+[node name="PlayerSprite" type="AnimatedSprite" parent="."]
 
 scale = Vector2( 0.1, 0.1 )
-texture = ExtResource( 2 )
+frames = SubResource( 1 )
+animation = "Walk"
+frame = 1
 _sections_unfolded = [ "Transform" ]
 
 [node name="collision_shape_2d" type="CollisionShape2D" parent="."]
 
-shape = SubResource( 1 )
+position = Vector2( 0.0877111, -0.00123465 )
+scale = Vector2( 0.996575, 0.998028 )
+shape = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Main" parent="." instance=ExtResource( 3 )]
+[node name="CombatSystem" parent="." instance=ExtResource( 7 )]
 
 
