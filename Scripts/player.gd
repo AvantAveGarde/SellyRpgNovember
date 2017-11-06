@@ -7,7 +7,7 @@ var screensize
 func _ready():
 	set_process(true)
 	screensize = get_viewport_rect().size
-	extents = get_node("Sprite").get_texture().get_size() / 2
+	extents = get_node("sprite").get_texture().get_size() / 2
 	translate(screensize / 2)
 
 func _process(delta):
