@@ -1,15 +1,18 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Combat/CombatUI.gd" type="Script" id=1]
-[ext_resource path="res://Combat/TempType.png" type="Texture" id=2]
-[ext_resource path="res://Combat/Pixeled.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Combat/TempTypeF.png" type="Texture" id=2]
+[ext_resource path="res://Combat/TempType.png" type="Texture" id=3]
+[ext_resource path="res://Combat/TempTypeA.png" type="Texture" id=4]
+[ext_resource path="res://Combat/TempTypeE.png" type="Texture" id=5]
+[ext_resource path="res://Combat/Pixeled.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 
 size = 38
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 3 )
+font_data = ExtResource( 6 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [node name="Control" type="Control"]
@@ -27,6 +30,10 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 script = ExtResource( 1 )
 _sections_unfolded = [ "Anchor" ]
+fire_texture = ExtResource( 2 )
+water_texture = ExtResource( 3 )
+air_texture = ExtResource( 4 )
+earth_texture = ExtResource( 5 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 
@@ -43,7 +50,7 @@ rect_clip_content = false
 mouse_filter = 1
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="TextureRect"]
