@@ -11,18 +11,21 @@ const charge_threshold_block = 0.2
 var charge_time_attack = 0.0
 var charge_time_block = 0.0
 var current_action = ""
-var next_action = null
-var character_sprite = null
+var next_action
+var character_sprite
 
 var combat_ui
 
 func setSprite(sprite):
 	character_sprite = sprite
+	character_sprite.set_block_signals(false)
 	character_sprite.connect("animation_finished", self, "action_finished")
+	print(str(character_sprite.get_signal_connection_list("animation_finished")))
 	
 func action_finished():
+	print("animation finished")
 	if current_action:
-		current_action = ""
+		current_action = null
 
 func _ready():
 	combat_ui = get_node("CombatUI")
