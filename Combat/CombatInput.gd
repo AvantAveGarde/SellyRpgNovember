@@ -1,5 +1,7 @@
 extends Node
 
+#this is a debug script and will be removed
+
 onready var combat = get_node("CombatCore")
 
 func _process(delta):

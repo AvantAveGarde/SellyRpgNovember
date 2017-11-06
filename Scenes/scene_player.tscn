@@ -23,13 +23,8 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": false,
-"name": "RangedAttack",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 5 ) ],
-"loop": false,
-"name": "Parry",
-"speed": 5.0
+"name": "LightAttack",
+"speed": 2.0
 }, {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
@@ -38,12 +33,17 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": false,
-"name": "HeavyAttack",
-"speed": 2.0
+"name": "RangedAttack",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 5 ) ],
+"loop": false,
+"name": "Parry",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": false,
-"name": "LightAttack",
+"name": "HeavyAttack",
 "speed": 2.0
 } ]
 

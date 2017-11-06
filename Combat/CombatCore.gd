@@ -70,7 +70,7 @@ func hold_attack(delta):
 	charge_time_attack += delta
 
 func release_attack():
-	if !next_action:
+	if next_action == Action.NONE:
 		if Input.is_action_pressed("block") && charges > 0:
 			next_action = Action.RANGED_ATTACK
 			if current_action == Action.BLOCK:
@@ -98,9 +98,10 @@ func release_block():
 	charge_time_block = 0.0
 
 func light_attack():
+	print(character_sprite.animation)
 	if character_sprite.animation != "LightAttack":
 		character_sprite.play("LightAttack")
-		print("light attack")
+		#print("light attack")
 
 func heavy_attack():
 	if character_sprite.animation != "HeavyAttack":

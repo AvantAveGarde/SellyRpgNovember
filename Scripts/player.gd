@@ -44,7 +44,7 @@ func  PlayerInput(delta):
 			anim = "Walk"
 		else:
 			anim = "Idle"
-		sprite.play(anim)
+		#sprite.play(anim)
 
 	
 	#Movement
