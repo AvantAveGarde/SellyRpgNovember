@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Combat/CombatSystem.gd" type="Script" id=1]
+[ext_resource path="res://Combat/CombatCore.gd" type="Script" id=1]
 [ext_resource path="res://Combat/CombatUI.tscn" type="PackedScene" id=2]
+
 
 [node name="CombatSystem" type="Node"]
 
