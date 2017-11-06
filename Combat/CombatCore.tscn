@@ -3,8 +3,7 @@
 [ext_resource path="res://Combat/CombatCore.gd" type="Script" id=1]
 [ext_resource path="res://Combat/CombatUI.tscn" type="PackedScene" id=2]
 
-
-[node name="CombatSystem" type="Node"]
+[node name="CombatCore" type="Node"]
 
 script = ExtResource( 1 )
 

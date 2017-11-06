@@ -1,9 +1,6 @@
 extends Node
 
-var combat
-
-func _ready():
-	combat = get_node("CombatCore")
+onready var combat = get_node("CombatCore")
 
 func _process(delta):
 	if Input.is_action_pressed("attack"):

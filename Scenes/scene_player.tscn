@@ -6,7 +6,7 @@
 [ext_resource path="res://Sprites/awakening_link.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/attack1.png" type="Texture" id=5]
 [ext_resource path="res://Sprites/attack2.png" type="Texture" id=6]
-[ext_resource path="res://Combat/CombatSystem.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Combat/CombatInput.tscn" type="PackedScene" id=7]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -17,9 +17,29 @@ animations = [ {
 "speed": 3.0
 }, {
 "frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "Attack",
+"loop": false,
+"name": "LightAttack",
 "speed": 2.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "Block",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": false,
+"name": "HeavyAttack",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 5 ) ],
+"loop": false,
+"name": "Parry",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": false,
+"name": "RangedAttack",
+"speed": 0.0
 }, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
@@ -46,8 +66,8 @@ moveSpeed = 200
 
 scale = Vector2( 0.1, 0.1 )
 frames = SubResource( 1 )
-animation = "Walk"
-frame = 1
+animation = "Idle"
+playing = true
 _sections_unfolded = [ "Transform" ]
 
 [node name="collision_shape_2d" type="CollisionShape2D" parent="."]
@@ -57,6 +77,6 @@ scale = Vector2( 0.996575, 0.998028 )
 shape = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="CombatSystem" parent="." instance=ExtResource( 7 )]
+[node name="CombatInput" parent="." instance=ExtResource( 7 )]
 
 

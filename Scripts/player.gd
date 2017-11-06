@@ -4,7 +4,7 @@ export var moveSpeed = 200
 var velocity = Vector2()
 var screensize
 
-onready var combat = get_node("CombatSystem")
+onready var combat = get_node("CombatInput/CombatCore")
 onready var sprite = get_node("PlayerSprite")
 
 var anim = "Idle"
@@ -14,15 +14,13 @@ var anim = "Idle"
 func _ready():
 	set_process(true)
 	screensize = get_viewport_rect().size
-	
-
+	combat.setSprite(sprite)
 
 #update
 func _process(delta):
 	PlayerInput(delta)
 
 func  PlayerInput(delta):
-
 	#Input
 	var input = Vector2(0, 0)
 	if Input.is_action_pressed("ui_right"):
@@ -39,21 +37,13 @@ func  PlayerInput(delta):
 		input.y = 0
 	
 	velocity = input.normalized() * moveSpeed
-	
-	#attack
-	if Input.is_action_pressed("attack"):
-		combat.hold_attack(delta)
-		velocity.y = 0
-		velocity.x = 0
-		
-	if Input.is_action_just_released("attack"):
-		combat.release_attack()
 
 	#animate
-	if  velocity.y != 0:
-		anim = "Walk"
-	else:
-		anim = "Idle"
+	if !sprite.is_playing():
+		if  velocity.y != 0:
+			anim = "Walk"
+		else:
+			anim = "Idle"
 	
 	sprite.play(anim);
 
