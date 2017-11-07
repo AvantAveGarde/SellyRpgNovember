@@ -16,11 +16,12 @@ func set_charges(value):
 	charge_label.set_text(str(value))
 
 func set_charge_texure(type):
-	if type == GlobalValues.Element.FIRE:
-		charge_image.texture = fire_texture
-	elif type == GlobalValues.Element.WATER:
-		charge_image.texture = water_texture
-	elif type == GlobalValues.Element.AIR:
-		charge_image.texture = air_texture
-	elif type == GlobalValues.Element.EARTH:
-		charge_image.texture = earth_texture
+	match type:
+		GlobalValues.Element.FIRE:
+			charge_image.texture = fire_texture
+		GlobalValues.Element.WATER:
+			charge_image.texture = water_texture
+		GlobalValues.Element.AIR:
+			charge_image.texture = air_texture
+		GlobalValues.Element.EARTH:
+			charge_image.texture = earth_texture
