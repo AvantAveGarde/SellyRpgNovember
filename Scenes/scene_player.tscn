@@ -22,15 +22,20 @@ animations = [ {
 "name": "RangedAttack",
 "speed": 0.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), null ],
-"loop": false,
-"name": "HeavyAttack",
-"speed": 2.0
+"frames": [ ExtResource( 4 ), null ],
+"loop": true,
+"name": "Block",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ), ExtResource( 2 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "Walk",
 "speed": 3.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), null ],
+"loop": false,
+"name": "HeavyAttack",
+"speed": 2.0
 }, {
 "frames": [ ExtResource( 4 ), ExtResource( 3 ), null ],
 "loop": false,
@@ -41,11 +46,6 @@ animations = [ {
 "loop": false,
 "name": "LightAttack",
 "speed": 2.0
-}, {
-"frames": [ ExtResource( 4 ), null ],
-"loop": true,
-"name": "Block",
-"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -55,6 +55,7 @@ extents = Vector2( 17.4563, 21.401 )
 
 [node name="player" type="KinematicBody2D"]
 
+position = Vector2( 0, 1 )
 input_pickable = true
 collision_layer = 1
 collision_mask = 1

@@ -6,6 +6,7 @@ var velocity = Vector2()
 var anim = "Idle"
 var sprite
 var kinematic_body
+signal move
 
 #onready var combat = get_node("CombatCore")
 func set_kinematic_body(body):
@@ -39,9 +40,13 @@ func process_movement(input):
 		if  velocity.y != 0 || velocity.x != 0:
 			anim = "Walk"
 			sprite.play(anim)
+			
 	elif sprite.animation == "Walk":
 		if  velocity.y == 0  && velocity.x == 0:
 			anim = "Idle"
 			sprite.play(anim)
 	#Movement
 	kinematic_body.move_and_slide(velocity)
+	emit_signal("move")
+
+	
