@@ -10,7 +10,9 @@ onready var health = max_health
 signal die
 
 func _ready():
-	pass
+	set_process(false)
+	set_physics_process(false)
+	set_process_input(false)
 
 func damage(sorce, attack):
 	health -= attack.get_total_damage()

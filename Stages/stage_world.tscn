@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://Tilemaps/Test.tres" type="TileSet" id=2]
-[ext_resource path="res://Scenes/scene_player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player/scene_player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/FireballSpawner.tscn" type="PackedScene" id=4]
 
 [node name="world" type="Node"]
@@ -35,15 +35,12 @@ __meta__ = {
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 
-editor/display_folded = true
 position = Vector2( 512, 300 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="FireballSpawner" parent="." instance=ExtResource( 4 )]
 
 position = Vector2( 355, 374 )
-
-[connection signal="move" from="Player/MovementInput" to="." method="update_camera"]
 
 
 [editable path="Player"]
