@@ -29,25 +29,24 @@ func regen_charges(delta):
 				charges_regeneration_time = 0.0
 			else:
 				charges_regeneration_time -= charges_regeneration_threeshold
-			print("Charge Regenerated")
 
 func process_input(delta):
 	if Input.is_action_pressed("attack"):
-		hold_attack(delta)
+		button_hold_attack(delta)
 		
 	if Input.is_action_just_released("attack"):
-		release_attack()
+		button_release_attack()
 		
 	if Input.is_action_pressed("block"):
-		hold_block(delta)
+		button_hold_block(delta)
 		
 	if Input.is_action_just_released("block"):
-		release_block()
+		button_release_block()
 
-func hold_attack(delta):
+func button_hold_attack(delta):
 	charge_time_attack += delta
 
-func release_attack():
+func button_release_attack():
 	if next_action == Action.NONE:
 		if current_action == Action.BLOCK:
 			charge_time_block = 0.0
@@ -61,13 +60,13 @@ func release_attack():
 			next_action = Action.LIGHT_ATTACK
 	charge_time_attack = 0.0
 
-func hold_block(delta):
+func button_hold_block(delta):
 	if current_action == Action.BLOCK || next_action == Action.BLOCK || next_action == Action.NONE:
 		charge_time_block += delta
 		if current_action != Action.BLOCK:
 			next_action = Action.BLOCK
 
-func release_block():
+func button_release_block():
 	if next_action == Action.BLOCK:
 		next_action = Action.NONE
 	if current_action == Action.BLOCK:

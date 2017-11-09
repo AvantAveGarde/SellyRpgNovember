@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Combat/Character.gd" type="Script" id=1]
+
+[node name="Character" type="Node"]
+
+script = ExtResource( 1 )
+max_health = 10
+block_reduction = 2
+move_speed = 200
+max_charges = 5
+
+

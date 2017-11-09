@@ -15,6 +15,10 @@ var current_action = Action.NONE
 
 var character_sprite
 
+onready var character = get_node("Character")
+
+#enum Anims {IDLE = "Idle", LIGHTATTACK = "LightAttack", HEAVYATTACK = "HeavyAttack", RANGEDATTACK = "RangedAttack", BLOCK = "Block", PARRY = "Parry"}
+
 const idle_anim = "Idle"
 const light_attack_anim = "LightAttack"
 const heavy_attack_anim = "HeavyAttack"
@@ -24,9 +28,9 @@ const parry_anim = "Parry"
 
 func set_sprite(sprite):
 	character_sprite = sprite
-	character_sprite.connect("animation_finished", self, "action_finished")
+	character_sprite.connect("animation_finished", self, "on_action_finished")
 
-func action_finished():
+func on_action_finished():
 	print("animation finished")
 	character_sprite.play(idle_anim)
 	current_action = Action.NONE
@@ -34,25 +38,25 @@ func action_finished():
 func _process(delta):
 	if current_action != Action.NONE:
 		if current_action == Action.LIGHT_ATTACK:
-			light_attack()
+			do_light_attack()
 		elif current_action == Action.HEAVY_ATTACK:
-			heavy_attack()
+			do_heavy_attack()
 		elif current_action == Action.RANGED_ATTACK:
-			ranged_attack()
+			do_ranged_attack()
 		elif current_action == Action.BLOCK:
-			block()
+			do_block()
 		elif current_action == Action.PARRY:
-			parry()
+			do_parry()
 		else:
 			current_action = Action.NONE
 
-func light_attack():
+func do_light_attack():
 	print(character_sprite.animation)
 	if character_sprite.animation != light_attack_anim:
 		character_sprite.play(light_attack_anim)
 		#print("light attack")
 
-func heavy_attack():
+func do_heavy_attack():
 	if character_sprite.animation != heavy_attack_anim:
 		if can_use_charge_attack(1):
 			consume_charges(1)
@@ -60,16 +64,8 @@ func heavy_attack():
 			print("heavy attack")
 		else:
 			print("not enough charges for heavy attack")
-			
-func can_use_charge_attack(charges_required):
-	return charges > charges_required
 
-func consume_charges(charges_count):
-	charges -= charges_count
-	if charges < 0:
-		charges = 0
-
-func ranged_attack():
+func do_ranged_attack():
 	if character_sprite.animation != ranged_attack_anim:
 		if can_use_charge_attack(1):
 			consume_charges(1)
@@ -78,17 +74,26 @@ func ranged_attack():
 		else:
 			print("not enough charges for ranged attack")
 
-func block():
+func do_perform_block():
 	if character_sprite.animation != block_anim:
 		character_sprite.play(block_anim)
 
-func parry():
+func do_perform_parry():
 	if character_sprite.animation != parry_anim:
 		character_sprite.play(parry_anim)
 		print("parry")
 
-func on_Damage(source, attack):
-	pass
-
-func absorb():
+func do_absorb():
 	print("absorb")
+
+func can_use_charge_attack(charges_required):
+	return charges > charges_required
+
+func consume_charges(charges_count):
+	charges -= charges_count
+	if charges < 0:
+		charges = 0
+
+func on_Damage(source, attack):
+	character.damage(source, attack)
+	pass

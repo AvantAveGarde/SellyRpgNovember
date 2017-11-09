@@ -5,6 +5,7 @@ var screensize
 onready var movementInput = get_node("MovementInput")
 onready var combatInput = get_node("CombatInput")
 onready var sprite = get_node("PlayerSprite")
+var test = 10
 
 #Initialization
 func _ready():
