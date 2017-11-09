@@ -15,6 +15,7 @@ var current_action = Action.NONE
 
 var character_sprite
 
+#export(NodePath) var character
 onready var character = get_node("Character")
 
 #enum Anims {IDLE = "Idle", LIGHTATTACK = "LightAttack", HEAVYATTACK = "HeavyAttack", RANGEDATTACK = "RangedAttack", BLOCK = "Block", PARRY = "Parry"}
@@ -26,12 +27,15 @@ const ranged_attack_anim = "RangedAttack"
 const block_anim = "Block"
 const parry_anim = "Parry"
 
+func _ready():
+	pass
+	#character = get_node(character)
+
 func set_sprite(sprite):
 	character_sprite = sprite
 	character_sprite.connect("animation_finished", self, "on_action_finished")
 
 func on_action_finished():
-	print("animation finished")
 	character_sprite.play(idle_anim)
 	current_action = Action.NONE
 
@@ -54,25 +58,22 @@ func do_light_attack():
 	print(character_sprite.animation)
 	if character_sprite.animation != light_attack_anim:
 		character_sprite.play(light_attack_anim)
-		#print("light attack")
 
 func do_heavy_attack():
 	if character_sprite.animation != heavy_attack_anim:
 		if can_use_charge_attack(1):
 			consume_charges(1)
 			character_sprite.play(heavy_attack_anim)
-			print("heavy attack")
 		else:
-			print("not enough charges for heavy attack")
+			pass
 
 func do_ranged_attack():
 	if character_sprite.animation != ranged_attack_anim:
 		if can_use_charge_attack(1):
 			consume_charges(1)
 			character_sprite.play(ranged_attack_anim)
-			print("ranged attack")
 		else:
-			print("not enough charges for ranged attack")
+			pass
 
 func do_perform_block():
 	if character_sprite.animation != block_anim:
@@ -81,10 +82,9 @@ func do_perform_block():
 func do_perform_parry():
 	if character_sprite.animation != parry_anim:
 		character_sprite.play(parry_anim)
-		print("parry")
 
 func do_absorb():
-	print("absorb")
+	pass
 
 func can_use_charge_attack(charges_required):
 	return charges > charges_required
@@ -95,5 +95,21 @@ func consume_charges(charges_count):
 		charges = 0
 
 func on_Damage(source, attack):
+	damage(source, attack)
+
+func damage(source, attack):
 	character.damage(source, attack)
-	pass
+
+func is_blocking():
+	return current_action == Action.BLOCK
+
+func is_parrying():
+	return current_action == Action.PARRY
+
+func get_block_state(attack):
+	if is_blocking():
+		return 1
+	elif is_parrying():
+		return 2
+	else:
+		return 0

@@ -74,7 +74,6 @@ func button_release_block():
 		if charge_time_block < charge_threshold_block:
 			next_action = Action.PARRY
 		current_action = Action.NONE
-		print("blocked for " + str(charge_time_block) + " seconds")
 	charge_time_block = 0.0
 
 func consume_charges(charges_count):

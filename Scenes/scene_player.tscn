@@ -1,51 +1,52 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/player.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/awakening_link 3.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/awakening_link 2.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/awakening_link.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/attack2.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/attack1.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/awakening_link 2.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/attack1.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/attack2.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/awakening_link 3.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/awakening_link.png" type="Texture" id=6]
 [ext_resource path="res://Combat/CombatInput.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scripts/MovementInput.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Combat/Character.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/MovementInput.tscn" type="PackedScene" id=9]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "Walk",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ), null ],
-"loop": false,
-"name": "Parry",
+"name": "Idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ), null ],
-"loop": true,
-"name": "Block",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 5 ), null ],
-"loop": false,
-"name": "HeavyAttack",
-"speed": 2.0
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 5 ), null ],
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), null ],
 "loop": false,
 "name": "LightAttack",
 "speed": 2.0
 }, {
-"frames": [ ExtResource( 6 ), ExtResource( 5 ), null ],
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), null ],
 "loop": false,
 "name": "RangedAttack",
 "speed": 0.0
 }, {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "Idle",
+"frames": [ ExtResource( 4 ), ExtResource( 3 ), null ],
+"loop": false,
+"name": "Parry",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), null ],
+"loop": true,
+"name": "Block",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), null ],
+"loop": false,
+"name": "HeavyAttack",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 2 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 3.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -80,7 +81,15 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CombatInput" parent="." instance=ExtResource( 7 )]
 
-[node name="MovementInput" parent="." instance=ExtResource( 8 )]
+[node name="Character" type="Node" parent="CombatInput"]
+
+script = ExtResource( 8 )
+max_health = 10
+block_reduction = 2
+move_speed = 200
+max_charges = 5
+
+[node name="MovementInput" parent="." instance=ExtResource( 9 )]
 
 moveSpeed = 200
 

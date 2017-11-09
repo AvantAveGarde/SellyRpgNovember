@@ -12,7 +12,8 @@ signal die
 func _ready():
 	pass
 
-func damage(damage):
-	health -= damage
+func damage(sorce, attack):
+	health -= attack.get_total_damage()
 	if (health <= 0):
-		emit_signal("die")
+		print("player diededed!")
+		#emit_signal("die")

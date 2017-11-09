@@ -32,9 +32,16 @@ is_ranged_attack = false
 is_magic_attack = false
 is_charged_atack = true
 is_parryable = false
+sprite = NodePath("Sprite")
+collision_shape = NodePath("CollisionShape")
+damage_shape = NodePath("DamageZone")
 move_speed = 200
+life_duration = 2.0
+base_damage = 1
+elemental_damage = 1
+penetration = 1
 
-[node name="Hitbox" type="CollisionShape2D" parent="."]
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
 
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
@@ -43,6 +50,7 @@ _sections_unfolded = [ "Transform" ]
 
 frames = SubResource( 2 )
 animation = "default"
+frame = 1
 playing = true
 
 [node name="DamageZone" type="Area2D" parent="."]
@@ -55,5 +63,10 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 _sections_unfolded = [ "Audio Bus", "Collision", "Pickable", "Transform" ]
+
+[node name="DamageShape" type="CollisionShape2D" parent="DamageZone"]
+
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
 
 

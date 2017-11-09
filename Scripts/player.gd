@@ -2,8 +2,8 @@ extends KinematicBody2D
 
 var screensize
 
-onready var movementInput = get_node("MovementInput")
-onready var combatInput = get_node("CombatInput")
+onready var movement_system= get_node("MovementInput")
+onready var combat_system = get_node("CombatInput")
 onready var sprite = get_node("PlayerSprite")
 var test = 10
 
@@ -11,11 +11,11 @@ var test = 10
 func _ready():
 	set_process(true)
 	screensize = get_viewport_rect().size
-	movementInput.set_kinematic_body(self)
-	movementInput.set_sprite(sprite)
-	combatInput.set_sprite(sprite)
+	movement_system.set_kinematic_body(self)
+	movement_system.set_sprite(sprite)
+	combat_system.set_sprite(sprite)
 
 #update
 func _process(delta):
-	movementInput.process_input(delta)
-	combatInput.process_input(delta)
+	movement_system.process_input(delta)
+	combat_system.process_input(delta)
