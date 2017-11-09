@@ -10,6 +10,6 @@ func _ready():
 
 func spawn_fireball():
 	var new_fireball = fireball.instance()
-	new_fireball.rotate(randi() % 90)
+	#new_fireball.rotate(randi())
 	#new_fireball.position = self.position
 	add_child(new_fireball)

@@ -1,11 +1,18 @@
 extends "res://Combat/CombatCore.gd"
 
+#TODO:  Possibly collapse thresholds into a single variable
+const charge_threshold_attack = 0.2
+const charge_threshold_block = 0.2
+var charge_time_attack = 0.0
+var charge_time_block = 0.0
+
 var next_action = Action.NONE
 onready var combat_ui = get_node("CombatUI")
 
 #TODO:  Remove regen later
 const charges_regeneration_threeshold = 2.0
 var charges_regeneration_time = 0.0
+var last_block_time = 0.0
 
 func _ready():
 	combat_ui = get_node("CombatUI")
@@ -13,6 +20,8 @@ func _ready():
 
 func _process(delta):
 	regen_charges(delta)
+	if !is_blocking():
+		last_block_time += delta
 	if current_action != Action.NONE || next_action != Action.NONE:
 		if current_action == Action.NONE:
 			current_action = next_action
@@ -20,12 +29,12 @@ func _process(delta):
 		._process(delta)
 
 func regen_charges(delta):
-	if charges < charges_max:
+	if charges < get_max_charges():
 		charges_regeneration_time += delta
 		if charges_regeneration_time >= charges_regeneration_threeshold:
 			charges += 1
 			combat_ui.set_charges(charges)
-			if charges >= charges_max:
+			if charges >= get_max_charges():
 				charges_regeneration_time = 0.0
 			else:
 				charges_regeneration_time -= charges_regeneration_threeshold

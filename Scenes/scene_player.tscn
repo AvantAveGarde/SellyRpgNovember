@@ -54,7 +54,7 @@ animations = [ {
 custom_solver_bias = 0.0
 extents = Vector2( 17.4563, 21.401 )
 
-[node name="player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D"]
 
 position = Vector2( 0, 1 )
 input_pickable = true
@@ -72,7 +72,7 @@ animation = "Idle"
 playing = true
 _sections_unfolded = [ "Transform" ]
 
-[node name="collision_shape_2d" type="CollisionShape2D" parent="."]
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
 
 position = Vector2( 0.0877111, -0.00123465 )
 scale = Vector2( 0.996575, 0.998028 )

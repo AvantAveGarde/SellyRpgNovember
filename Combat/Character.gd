@@ -14,6 +14,6 @@ func _ready():
 
 func damage(sorce, attack):
 	health -= attack.get_total_damage()
+	print("New health: " + str(health))
 	if (health <= 0):
-		print("player diededed!")
 		#emit_signal("die")

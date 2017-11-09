@@ -1,24 +1,7 @@
 extends Node
 
 enum Action {NONE, LIGHT_ATTACK, HEAVY_ATTACK, RANGED_ATTACK, BLOCK, PARRY}
-
-var charges = 5
-const charges_max = 5
-
-#TODO:  Possibly collapse thresholds into a single variable
-const charge_threshold_attack = 0.2
-const charge_threshold_block = 0.2
-var charge_time_attack = 0.0
-var charge_time_block = 0.0
-
-var current_action = Action.NONE
-
-var character_sprite
-
-#export(NodePath) var character
-onready var character = get_node("Character")
-
-#enum Anims {IDLE = "Idle", LIGHTATTACK = "LightAttack", HEAVYATTACK = "HeavyAttack", RANGEDATTACK = "RangedAttack", BLOCK = "Block", PARRY = "Parry"}
+enum Direction {N, NE, E, SE, S, SW, W, NW}
 
 const idle_anim = "Idle"
 const light_attack_anim = "LightAttack"
@@ -26,6 +9,16 @@ const heavy_attack_anim = "HeavyAttack"
 const ranged_attack_anim = "RangedAttack"
 const block_anim = "Block"
 const parry_anim = "Parry"
+
+var current_action = Action.NONE
+var character_sprite
+var dir = Direction.N
+
+#export(NodePath) var character
+onready var character = get_node("Character")
+onready var charges = get_max_charges()
+
+#enum Anims {IDLE = "Idle", LIGHTATTACK = "LightAttack", HEAVYATTACK = "HeavyAttack", RANGEDATTACK = "RangedAttack", BLOCK = "Block", PARRY = "Parry"}
 
 func _ready():
 	pass
@@ -75,11 +68,11 @@ func do_ranged_attack():
 		else:
 			pass
 
-func do_perform_block():
+func do_block():
 	if character_sprite.animation != block_anim:
 		character_sprite.play(block_anim)
 
-func do_perform_parry():
+func do_parry():
 	if character_sprite.animation != parry_anim:
 		character_sprite.play(parry_anim)
 
@@ -108,8 +101,24 @@ func is_parrying():
 
 func get_block_state(attack):
 	if is_blocking():
-		return 1
+		if is_facing_position(attack.position):
+			return 1
+		else:
+			return 0
 	elif is_parrying():
-		return 2
+		if is_facing_position(attack.position):
+			return 2
+		else:
+			return 0
 	else:
 		return 0
+
+func is_facing_position(point):
+	var test = get_parent().position.angle_to(point)
+	if true:
+		return true
+	else:
+		return false
+
+func get_max_charges():
+	return 0

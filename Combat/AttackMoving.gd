@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends CollisionObject2D
 
 export(int, "None", "Fire", "Water", "Earth", "Wind") var element_main
 export var is_ranged_attack = false
