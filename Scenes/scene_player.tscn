@@ -1,14 +1,19 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scripts/player.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/awakening_link 2.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Down.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/attack1.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/attack2.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/awakening_link 3.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/awakening_link.png" type="Texture" id=6]
-[ext_resource path="res://Combat/CombatInput.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Combat/Character.gd" type="Script" id=8]
-[ext_resource path="res://Scripts/MovementInput.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Sprites/Up.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Up (2).png" type="Texture" id=6]
+[ext_resource path="res://Sprites/left.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/left2.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/right (2).png" type="Texture" id=9]
+[ext_resource path="res://Sprites/right.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Down (2).png" type="Texture" id=11]
+[ext_resource path="res://Combat/CombatInput.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Combat/Character.gd" type="Script" id=13]
+[ext_resource path="res://Scripts/MovementInput.tscn" type="PackedScene" id=14]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -20,18 +25,8 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ), null ],
 "loop": false,
-"name": "LightAttack",
-"speed": 2.0
-}, {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), null ],
-"loop": false,
 "name": "RangedAttack",
 "speed": 0.0
-}, {
-"frames": [ ExtResource( 4 ), ExtResource( 3 ), null ],
-"loop": false,
-"name": "Parry",
-"speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ), null ],
 "loop": true,
@@ -40,12 +35,37 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ), null ],
 "loop": false,
+"name": "LightAttack",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 3 ), null ],
+"loop": false,
+"name": "Parry",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), null ],
+"loop": false,
 "name": "HeavyAttack",
 "speed": 2.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 2 ), ExtResource( 6 ) ],
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 5 ) ],
 "loop": true,
-"name": "Walk",
+"name": "North",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "West",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "East",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 2 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "South",
 "speed": 3.0
 } ]
 
@@ -54,7 +74,7 @@ animations = [ {
 custom_solver_bias = 0.0
 extents = Vector2( 17.4563, 21.401 )
 
-[node name="Player" type="KinematicBody2D"]
+[node name="player" type="KinematicBody2D"]
 
 position = Vector2( 0, 1 )
 input_pickable = true
@@ -69,27 +89,28 @@ _sections_unfolded = [ "Transform" ]
 scale = Vector2( 0.1, 0.1 )
 frames = SubResource( 1 )
 animation = "Idle"
-playing = true
 _sections_unfolded = [ "Transform" ]
 
-[node name="CollisionShape" type="CollisionShape2D" parent="."]
+[node name="collision_shape_2d" type="CollisionShape2D" parent="."]
 
 position = Vector2( 0.0877111, -0.00123465 )
 scale = Vector2( 0.996575, 0.998028 )
 shape = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="CombatInput" parent="." instance=ExtResource( 7 )]
+[node name="CombatInput" parent="." instance=ExtResource( 12 )]
+
+editor/display_folded = true
 
 [node name="Character" type="Node" parent="CombatInput"]
 
-script = ExtResource( 8 )
+script = ExtResource( 13 )
 max_health = 10
 block_reduction = 2
 move_speed = 200
 max_charges = 5
 
-[node name="MovementInput" parent="." instance=ExtResource( 9 )]
+[node name="MovementInput" parent="." instance=ExtResource( 14 )]
 
 moveSpeed = 200
 
