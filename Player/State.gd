@@ -16,5 +16,5 @@ func on_enter():
 func on_exit():
 	pass
 	
-func process(delta):
+func process(flags, delta):
 	pass

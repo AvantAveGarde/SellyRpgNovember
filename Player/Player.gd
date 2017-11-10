@@ -15,6 +15,27 @@ onready var States = {
 	BLOCK: get_node("States/Block")
 }
 
+enum InputFlags {
+	F_LIGHT_ATTACK = 1 << 0,
+	F_HEAVY_ATTACK = 1 << 1,
+	F_BLOCK = 1 << 2,
+	F_PARRY = 1 << 3,
+	F_RANGED_ATTACK = 1 << 4,
+	F_ABSORB = 1 << 5,
+	F_NORTH = 1 << 6,
+	F_SOUTH = 1 << 7,
+	F_EAST = 1 << 8,
+	F_WEST = 1 << 9,
+	F_NORTH_EAST = 1 << 10,
+	F_NORTH_WEST = 1 << 11,
+	F_SOUTH_EAST = 1 << 12,
+	F_SOUTH_WEST = 1 << 13,
+	F_ATTACK_HELD = 1 << 14
+	F_ATTACK_RELEASED = 1 << 15,
+	F_BLOCK_HELD = 1 << 16,
+	F_BLOCK_RELEASED = 1 << 17
+}
+
 var current_state
 #var next_action = null
 
@@ -54,21 +75,49 @@ func _ready():
 	current_state = States[IDLE]
 
 func _process(delta):
-	current_state.process(delta)
+
+	var flags = 0x0
+
+	if Input.is_action_pressed("ui_right"):
+		flags |= F_EAST
+	elif Input.is_action_pressed("ui_left"):
+		flags |= F_WEST
+
+	if Input.is_action_pressed("ui_up"):
+		flags |= F_NORTH
+	elif Input.is_action_pressed("ui_down"):
+		flags |= F_SOUTH
+
+	if Input.is_action_pressed("attack"):
+		flags |= F_ATTACK_HELD
+
+	if Input.is_action_just_released("attack"):
+		flags |= F_ATTACK_RELEASED
+
+	if Input.is_action_just_pressed("block"):
+		flags |= F_BLOCK
+
+	if Input.is_action_pressed("block"):
+		flags |= F_BLOCK_HELD
+
+	if Input.is_action_just_released("block"):
+		flags |= F_BLOCK_RELEASED
+
+	current_state.process(flags, delta)
 
 func change_state(state_id):
-	
+
 	current_state.on_exit()
-	
+
 	current_state = States[state_id]
-	
+
 	current_state.on_enter()
-	
+
 func on_animation_finished():
 	if not current_state.has_method('on_animation_finished'):
 		return
 	current_state.on_animation_finished()
-	
+
 #func button_hold_attack(delta):
 #	charge_time_attack += delta
 
