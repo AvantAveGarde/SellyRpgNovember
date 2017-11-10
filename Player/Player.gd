@@ -1,7 +1,6 @@
 extends KinematicBody2D
 
 #player components
-onready var character = get_node("Character")
 onready var combat_system = get_node("CombatCore")
 onready var sprite = get_node("PlayerSprite")
 
@@ -53,16 +52,26 @@ var charge_time_block = 0.0
 
 #animation constants
 #TODO:  Consider moving anim consts into state where they are needed
-const north = "North"
-const n_east = "NEast"
-const east = "East"
-const south = "South"
-const s_east = "SEast"
-const s_west = "SWest"
-const west = "West"
-const n_west = "NWest"
+var facing_direction
 
-const idle_anim = "Idle"
+const n_west = "NorthWest"
+const north = "North"
+const n_east = "NorthEast"
+const south = "South"
+const s_east = "SouthEast"
+const s_west = "SouthWest"
+const west = "West"
+const east = "East"
+
+const idle_north = "IdleNorth"
+const idle_north_east = "IdleNorthEast"
+const idle_east = "IdleEast"
+const idle_south_east = "IdleSouthEast"
+const idle_south = "IdleSouth"
+const idle_south_west = "IdleSouthWest"
+const idle_west = "IdleWest"
+const idle_north_west = "IdleNorthWest"
+
 const light_attack_anim = "LightAttack"
 const heavy_attack_anim = "HeavyAttack"
 const ranged_attack_anim = "RangedAttack"
@@ -82,7 +91,6 @@ func _process(delta):
 		flags |= F_EAST
 	elif Input.is_action_pressed("ui_left"):
 		flags |= F_WEST
-
 	if Input.is_action_pressed("ui_up"):
 		flags |= F_NORTH
 	elif Input.is_action_pressed("ui_down"):
