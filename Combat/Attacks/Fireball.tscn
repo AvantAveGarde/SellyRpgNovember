@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Combat/AttackMoving.gd" type="Script" id=1]
+[ext_resource path="res://Combat/Attacks/AttackMoving.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Fireball1.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/Fireball2.png" type="Texture" id=3]
 
@@ -32,14 +32,12 @@ is_ranged_attack = false
 is_magic_attack = false
 is_charged_atack = true
 is_parryable = false
-sprite = NodePath("Sprite")
-collision_shape = NodePath("CollisionShape")
 damage_shape = NodePath("DamageZone")
-move_speed = 200
-life_duration = 2.0
+duration = 5.0
 base_damage = 1
 elemental_damage = 1
 penetration = 1
+move_speed = 200
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 

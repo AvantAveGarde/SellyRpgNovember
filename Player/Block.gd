@@ -6,9 +6,9 @@ func on_enter():
 func on_exit():
 	pass
 
-func process(delta):
-	if Input.is_action_pressed("block"):
+func process(flags, delta):
+	if flags & player.F_BLOCK_HELD == player.F_BLOCK_HELD:
 		player.combat_system.do_block()
 		
-	if Input.is_action_just_released("block"):
+	if flags & player.F_BLOCK_RELEASED == player.F_BLOCK_RELEASED:
 		player.change_state(player.IDLE)

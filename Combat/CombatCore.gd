@@ -1,135 +1,117 @@
 extends Node
 
-#enum Action {NONE, LIGHT_ATTACK, HEAVY_ATTACK, RANGED_ATTACK, BLOCK, PARRY}
 enum Direction {N, NE, E, SE, S, SW, W, NW}
 
-#const idle_anim = "Idle"
-#const light_attack_anim = "LightAttack"
-#const heavy_attack_anim = "HeavyAttack"
-#const ranged_attack_anim = "RangedAttack"
-#const block_anim = "Block"
-#const parry_anim = "Parry"
-
-#var current_action = Action.NONE
-#var character_sprite
 var dir = Direction.N
 
-#export(NodePath) var character
-onready var character = get_node("Character")
-onready var charges = 5#get_max_charges()
+export var max_health = 10
+export var max_charges = 5
+export var block_angle = 45
 
-#enum Anims {IDLE = "Idle", LIGHTATTACK = "LightAttack", HEAVYATTACK = "HeavyAttack", RANGEDATTACK = "RangedAttack", BLOCK = "Block", PARRY = "Parry"}
+onready var health = get_max_health()
+onready var charges = get_max_charges()
+
+
 
 func _ready():
 	set_process(false)
 	set_physics_process(false)
 	set_process_input(false)
 
-#func set_sprite(sprite):
-#	character_sprite = sprite
-#	character_sprite.connect("animation_finished", self, "on_action_finished")
+# Returns the number of slots you can absorb elements into
+func get_max_charges():
+	return max_charges
 
-#func on_action_finished():
-#	character_sprite.play(idle_anim)
-#	current_action = Action.NONE
+# Returns the maximum health points
+func get_max_health():
+	return max_health
 
-#func _process(delta):
-#	if current_action != Action.NONE:
-#		if current_action == Action.LIGHT_ATTACK:
-#			do_light_attack()
-#		elif current_action == Action.HEAVY_ATTACK:
-#			do_heavy_attack()
-#		elif current_action == Action.RANGED_ATTACK:
-#			do_ranged_attack()
-#		elif current_action == Action.BLOCK:
-#			do_block()
-#		elif current_action == Action.PARRY:
-#			do_parry()
-#		else:
-#			current_action = Action.NONE
+# Returns the angle in which attacks are being blocked or parried
+func get_block_angle():
+	return block_angle
 
-func do_light_attack():
-	#TODO:  Acutal attack functionality
-	print("light attack")
-	#print(character_sprite.animation)
-	#if character_sprite.animation != light_attack_anim:
-	#	character_sprite.play(light_attack_anim)
-
-func do_heavy_attack():
-	if can_use_charge_attack(1):
-		consume_charges(1)
-		print("heavy attack")
-	#if character_sprite.animation != heavy_attack_anim:
-	#	if can_use_charge_attack(1):
-	#		consume_charges(1)
-	#		character_sprite.play(heavy_attack_anim)
-	#	else:
-	#		pass
-
-func do_ranged_attack():
-	if can_use_charge_attack(1):
-		consume_charges(1)
-		print("heavy attack")
-	#if character_sprite.animation != ranged_attack_anim:
-	#	if can_use_charge_attack(1):
-	#		consume_charges(1)
-	#		character_sprite.play(ranged_attack_anim)
-	#	else:
-	#		pass
-
-func do_block():
-	print("blocking")
-	#if character_sprite.animation != block_anim:
-	#	character_sprite.play(block_anim)
-
-func do_parry():
-	print("parry")
-	#if character_sprite.animation != parry_anim:
-	#	character_sprite.play(parry_anim)
-
-func do_absorb():
-	print("absorb")
-
+# Check if we can execute that charged attack
 func can_use_charge_attack(charges_required):
-	return charges > charges_required
+	return charges >= charges_required
 
+# Used to actually use up the charges
 func consume_charges(charges_count):
 	charges -= charges_count
 	if charges < 0:
 		charges = 0
 
-func on_Damage(source, attack):
-	damage(source, attack)
-
+# Calculates damage on this character
 func damage(source, attack):
-	character.damage(source, attack)
+	health -= attack.get_total_damage()
+	if (health <= 0):
+		print(str(self) + " died!")
+		health = max_health
+		pass
+		#emit_signal("die")
 
-#func is_blocking():
-#	return current_action == Action.BLOCK
-
-#func is_parrying():
-#	return current_action == Action.PARRY
-
+# Used to check wether or not an attack had been blocked, parried or tanked face on
+# Not only does it check the state of this character, but also if the angle is okay
+# TODO fix bad function
 func get_block_state(attack):
 	if is_blocking():
-		if is_facing_position(attack.position):
+		#if is_facing_attack(attack.position):
 			return 1
-		else:
-			return 0
-	elif is_parrying():
-		if is_facing_position(attack.position):
-			return 2
-		else:
-			return 0
+		#else:
+			#return 0
+	#elif is_parrying():
+		#if is_facing_attack(attack.position):
+			#return 2
+		#else:
+			#return 0
 	else:
 		return 0
 
-func is_facing_position(point):
+# check if the character is blocking
+func is_blocking():
+	return false #get_parent().current_state == get_parent().StateID.BLOCK
+
+# check if the character is parrying
+func is_parrying():
+	return false #get_parent().current_state == get_parent().StateID.BLOCK
+
+# A quick check if the attack is within the block_angle limits
+# TODO everything
+func is_facing_attack(point):
 	var test = get_parent().position.angle_to(point)
 	if true:
 		return true
 	else:
 		return false
 
-func get_max_charges():
-	return 0
+# ##################################################
+# Perform Actions
+# ##################################################
+
+# perform a generic light attack
+func do_light_attack():
+	print("light attack")
+
+# perform a charged melee attack
+func do_heavy_attack():
+	if can_use_charge_attack(1):
+		consume_charges(1)
+		print("heavy attack")
+
+# perform a charged range attack
+func do_ranged_attack():
+	if can_use_charge_attack(1):
+		consume_charges(1)
+		print("heavy attack")
+
+# perform a block
+# usually it's not needed to overwrite it, unless you want the character to do some special stuff
+func do_block():
+	print("blocking")
+
+# perform a parry
+func do_parry():
+	print("parry")
+
+# absorb an attack
+func do_absorb():
+	print("absorb")
