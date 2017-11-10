@@ -2,27 +2,8 @@ extends 'res://Player/State.gd'
 
 func on_enter():
 	#TODO:  Directional idle animations?
-	#player.sprite.play(player.idle_anim)
-	if(player.facing_direction == "north"):
-		player.sprite.play(player.idle_north)
-	elif(player.facing_direction == "n_east"):
-		player.sprite.play(player.idle_north_east)
-	elif(player.facing_direction == "east"):
-		player.sprite.play(player.idle_east)
-	elif(player.facing_direction == "s_east"):
-		player.sprite.play(player.idle_south_east)
-	elif(player.facing_direction == "south"):
-		player.sprite.play(player.idle_south)
-	elif(player.facing_direction == "s_west"):
-		player.sprite.play(player.idle_south_west)
-	elif(player.facing_direction == "west"):
-		player.sprite.play(player.idle_west)
-	elif(player.facing_direction == "n_west"):
-		player.sprite.play(player.idle_north_west)
-	else:
-		player.sprite.play(player.idle_south)
+	player.sprite.play(player.idle_anim)
 
-	
 func on_exit():
 	pass
 

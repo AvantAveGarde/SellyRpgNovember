@@ -24,44 +24,31 @@ func process(flags, delta):
 		input.y = 0
 		
 	#movement animation
-	
-	#Horizontal
-	if player.velocity.x != 0 && player.velocity.y == 0:
+	if player.velocity.x != 0:
 		if player.velocity.x > 0:
 			player.sprite.play(player.east)
-			player.facing_direction = "east"
 		else:
 			player.sprite.play(player.west)
-			player.facing_direction = "west"
-	
-	#Vertical
-	if  player.velocity.y != 0 && player.velocity.x == 0:
+	if  player.velocity.y != 0:
 		if player.velocity.y > 0:
 			player.sprite.play(player.south)
-			player.facing_direction = "south"
+			if player.velocity.x > 0:
+				#anim = SE
+				pass
+			else:
+				#anim = SW
+				pass
 		else:
 			player.sprite.play(player.north)
-			player.facing_direction = "north"
-	
-	#Diagonal
-	if player.velocity.y != 0 && player.velocity.x != 0:
-		if player.velocity.x > 0 && player.velocity.y > 0:
-			player.sprite.play(player.s_east)
-			player.facing_direction = "s_east"
-		elif player.velocity.x < 0 && player.velocity.y > 0:
-			player.sprite.play(player.s_west)
-			player.facing_direction = "s_west"
-		elif player.velocity.x > 0 && player.velocity.y < 0:
-			player.sprite.play(player.n_east)
-			player.facing_direction = "n_east"
-		elif player.velocity.x < 0 && player.velocity.y < 0:
-			player.sprite.play(player.n_west)
-			player.facing_direction = "n_west"
-		
+			if player.velocity.x > 0:
+				#anim = NE
+				pass
+			else:
+				#anim = NW
+				pass
 	
 	#TODO:  Consider acceleration based movement rather than constant speed
 	player.velocity = input.normalized() * player.move_speed
-	
 	player.move_and_slide(player.velocity)
 	
 	if player.velocity == Vector2():
