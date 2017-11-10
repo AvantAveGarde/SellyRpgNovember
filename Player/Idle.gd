@@ -3,6 +3,7 @@ extends 'res://Player/State.gd'
 func on_enter():
 	#TODO:  Directional idle animations?
 <<<<<<< HEAD
+<<<<<<< HEAD
 	#player.sprite.play(player.idle_anim)
 	if(player.facing_direction == "north"):
 		player.sprite.play(player.idle_north)
@@ -25,6 +26,10 @@ func on_enter():
 		
 	#print(player.facing_direction)
 	
+=======
+	player.sprite.play(player.idle_anim)
+
+>>>>>>> fe94359060dcd6358d83fa6a5c805e39cd524e17
 =======
 	player.sprite.play(player.idle_anim)
 

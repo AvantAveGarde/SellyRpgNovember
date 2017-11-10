@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 [gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
@@ -31,6 +32,11 @@
 [gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
+=======
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Player/Player.gd" type="Script" id=1]
+>>>>>>> fe94359060dcd6358d83fa6a5c805e39cd524e17
 [ext_resource path="res://Combat/CombatCore.gd" type="Script" id=2]
 [ext_resource path="res://Sprites/Down.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/right (2).png" type="Texture" id=4]
@@ -47,11 +53,15 @@
 [ext_resource path="res://Player/LightAttack.gd" type="Script" id=15]
 [ext_resource path="res://Player/HeavyAttack.gd" type="Script" id=16]
 [ext_resource path="res://Player/Block.gd" type="Script" id=17]
+<<<<<<< HEAD
+>>>>>>> fe94359060dcd6358d83fa6a5c805e39cd524e17
+=======
 >>>>>>> fe94359060dcd6358d83fa6a5c805e39cd524e17
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
+<<<<<<< HEAD
 <<<<<<< HEAD
 "frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 4 ) ],
 =======
@@ -91,10 +101,14 @@ animations = [ {
 }, {
 <<<<<<< HEAD
 "frames": [ ExtResource( 12 ) ],
+=======
+"frames": [ ExtResource( 3 ) ],
+>>>>>>> fe94359060dcd6358d83fa6a5c805e39cd524e17
 "loop": true,
 "name": "IdleSouth",
 "speed": 5.0
 }, {
+<<<<<<< HEAD
 "frames": [ ExtResource( 11 ), ExtResource( 10 ), null ],
 =======
 "frames": [ ExtResource( 8 ), ExtResource( 3 ), ExtResource( 3 ) ],
@@ -118,10 +132,19 @@ animations = [ {
 =======
 "frames": [ ExtResource( 6 ), ExtResource( 7 ), null ],
 >>>>>>> fe94359060dcd6358d83fa6a5c805e39cd524e17
+=======
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "East",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), null ],
+>>>>>>> fe94359060dcd6358d83fa6a5c805e39cd524e17
 "loop": false,
-"name": "LightAttack",
+"name": "HeavyAttack",
 "speed": 2.0
 }, {
+<<<<<<< HEAD
 <<<<<<< HEAD
 "frames": [ ExtResource( 8 ) ],
 "loop": true,
@@ -134,10 +157,21 @@ animations = [ {
 >>>>>>> fe94359060dcd6358d83fa6a5c805e39cd524e17
 "loop": true,
 "name": "Block",
+=======
+"frames": [ ExtResource( 8 ), ExtResource( 3 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "South",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 6 ), null ],
+"loop": false,
+"name": "Parry",
+>>>>>>> fe94359060dcd6358d83fa6a5c805e39cd524e17
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 6 ), ExtResource( 7 ), null ],
 "loop": false,
+<<<<<<< HEAD
 "name": "RangedAttack",
 "speed": 0.0
 }, {
@@ -149,20 +183,41 @@ animations = [ {
 "name": "North",
 >>>>>>> fe94359060dcd6358d83fa6a5c805e39cd524e17
 "speed": 3.0
+=======
+"name": "LightAttack",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "Block",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), null ],
+"loop": false,
+"name": "RangedAttack",
+"speed": 0.0
+>>>>>>> fe94359060dcd6358d83fa6a5c805e39cd524e17
 }, {
 "frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 17 ) ],
 "loop": true,
 <<<<<<< HEAD
+<<<<<<< HEAD
 "name": "NEast",
+=======
+"name": "North",
+>>>>>>> fe94359060dcd6358d83fa6a5c805e39cd524e17
 "speed": 3.0
 }, {
 "frames": [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 19 ) ],
 "loop": true,
+<<<<<<< HEAD
 "name": "SWest",
 "speed": 3.0
 }, {
 "frames": [ ExtResource( 13 ), ExtResource( 21 ), ExtResource( 13 ) ],
 "loop": true,
+=======
+>>>>>>> fe94359060dcd6358d83fa6a5c805e39cd524e17
 =======
 >>>>>>> fe94359060dcd6358d83fa6a5c805e39cd524e17
 "name": "West",
@@ -238,6 +293,7 @@ editor/display_folded = true
 [node name="Idle" type="Node" parent="States"]
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 script = ExtResource( 22 )
 
 [node name="Moving" type="Node" parent="States"]
@@ -268,11 +324,28 @@ script = ExtResource( 15 )
 
 [node name="HeavyAttack" type="Node" parent="States"]
 
+=======
+script = ExtResource( 13 )
+
+[node name="Moving" type="Node" parent="States"]
+
+script = ExtResource( 14 )
+
+[node name="LightAttack" type="Node" parent="States"]
+
+script = ExtResource( 15 )
+
+[node name="HeavyAttack" type="Node" parent="States"]
+
+>>>>>>> fe94359060dcd6358d83fa6a5c805e39cd524e17
 script = ExtResource( 16 )
 
 [node name="Block" type="Node" parent="States"]
 
 script = ExtResource( 17 )
+<<<<<<< HEAD
+>>>>>>> fe94359060dcd6358d83fa6a5c805e39cd524e17
+=======
 >>>>>>> fe94359060dcd6358d83fa6a5c805e39cd524e17
 
 
