@@ -26,20 +26,20 @@ animations = [ {
 "name": "Idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "East",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [ ExtResource( 6 ), ExtResource( 7 ), null ],
 "loop": false,
 "name": "HeavyAttack",
 "speed": 2.0
 }, {
-"frames": [ ExtResource( 8 ), ExtResource( 3 ) ],
+"frames": [ ExtResource( 8 ), ExtResource( 3 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "South",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [ ExtResource( 7 ), ExtResource( 6 ), null ],
 "loop": false,
@@ -61,15 +61,15 @@ animations = [ {
 "name": "RangedAttack",
 "speed": 0.0
 }, {
-"frames": [ ExtResource( 9 ), ExtResource( 10 ) ],
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "North",
-"speed": 5.0
+"speed": 3.0
 }, {
-"frames": [ ExtResource( 11 ), ExtResource( 12 ) ],
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 11 ) ],
 "loop": true,
 "name": "West",
-"speed": 5.0
+"speed": 3.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -79,6 +79,7 @@ extents = Vector2( 17.4563, 21.401 )
 
 [node name="player" type="KinematicBody2D"]
 
+position = Vector2( 0, 1 )
 input_pickable = true
 collision_layer = 1
 collision_mask = 1
