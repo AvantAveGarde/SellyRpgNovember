@@ -6,22 +6,17 @@ export var is_magic_attack = false
 export var is_charged_atack = false
 export var is_parryable = false
 
-export(NodePath) var sprite
-export(NodePath) var collision_shape
 export(NodePath) var damage_shape
 
 var element_sub = []
 var source
 
-export var move_speed = 200
-export var life_duration = 5.0
+export var duration = 5.0
 export var base_damage = 1
 export var elemental_damage = 1
 export var penetration = 1
 
 func _ready():
-	sprite = get_node(sprite)
-	collision_shape = get_node(collision_shape)
 	damage_shape = get_node(damage_shape)
 	
 	#add_collision_exception_with(KinematicBody2d)
@@ -29,22 +24,16 @@ func _ready():
 	pass
 	
 func _process(delta):
-	check_lifetime(delta)
+	check_duration(delta)
 	update_movement(delta)
 
-func check_lifetime(delta):
-	life_duration -= delta
-	if life_duration <= 0:
+func check_duration(delta):
+	duration -= delta
+	if duration <= 0:
 		kill()
 
 func update_movement(delta):
-	var velocity = Vector2(0, -1)
-	velocity = velocity.rotated(global_rotation)
-	velocity = velocity.normalized() * move_speed
-	
-	move_and_slide(velocity)
-	#var collider = move_and_collide(velocity)
-	#if collider:
+	pass
 
 func on_collide_with_body(body):
 	if body: #TODO: check what body it is, and if its enemy

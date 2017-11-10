@@ -1,75 +1,74 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://Combat/Character.gd" type="Script" id=2]
-[ext_resource path="res://Combat/CombatCore.gd" type="Script" id=3]
-[ext_resource path="res://Sprites/Down.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/attack1.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/attack2.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/Up.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/Up (2).png" type="Texture" id=8]
-[ext_resource path="res://Sprites/left.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/left2.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/right (2).png" type="Texture" id=11]
-[ext_resource path="res://Sprites/right.png" type="Texture" id=12]
-[ext_resource path="res://Sprites/Down (2).png" type="Texture" id=13]
-[ext_resource path="res://Player/Idle.gd" type="Script" id=14]
-[ext_resource path="res://Player/Moving.gd" type="Script" id=15]
-[ext_resource path="res://Player/LightAttack.gd" type="Script" id=16]
-[ext_resource path="res://Player/HeavyAttack.gd" type="Script" id=17]
-[ext_resource path="res://Player/Block.gd" type="Script" id=18]
+[ext_resource path="res://Combat/CombatCore.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/Down.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/right (2).png" type="Texture" id=4]
+[ext_resource path="res://Sprites/right.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/attack1.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/attack2.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Down (2).png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Up.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Up (2).png" type="Texture" id=10]
+[ext_resource path="res://Sprites/left.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/left2.png" type="Texture" id=12]
+[ext_resource path="res://Player/Idle.gd" type="Script" id=13]
+[ext_resource path="res://Player/Moving.gd" type="Script" id=14]
+[ext_resource path="res://Player/LightAttack.gd" type="Script" id=15]
+[ext_resource path="res://Player/HeavyAttack.gd" type="Script" id=16]
+[ext_resource path="res://Player/Block.gd" type="Script" id=17]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 4 ) ],
+"frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ), null ],
-"loop": false,
-"name": "RangedAttack",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 6 ), null ],
-"loop": true,
-"name": "Block",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ), null ],
-"loop": false,
-"name": "LightAttack",
-"speed": 2.0
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 5 ), null ],
-"loop": false,
-"name": "Parry",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ), null ],
-"loop": false,
-"name": "HeavyAttack",
-"speed": 2.0
-}, {
-"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "North",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 9 ) ],
-"loop": true,
-"name": "West",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 11 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "East",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 13 ), ExtResource( 4 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), null ],
+"loop": false,
+"name": "HeavyAttack",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 3 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "South",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 6 ), null ],
+"loop": false,
+"name": "Parry",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), null ],
+"loop": false,
+"name": "LightAttack",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "Block",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), null ],
+"loop": false,
+"name": "RangedAttack",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "North",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "West",
 "speed": 3.0
 } ]
 
@@ -89,17 +88,12 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 move_speed = 200
 
-[node name="Character" type="Node" parent="."]
+[node name="CombatCore" type="Node" parent="."]
 
 script = ExtResource( 2 )
 max_health = 10
-block_reduction = 2
-move_speed = 200
 max_charges = 5
-
-[node name="CombatCore" type="Node" parent="."]
-
-script = ExtResource( 3 )
+block_angle = 45
 
 [node name="PlayerSprite" type="AnimatedSprite" parent="."]
 
@@ -119,22 +113,22 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Idle" type="Node" parent="States"]
 
-script = ExtResource( 14 )
+script = ExtResource( 13 )
 
 [node name="Moving" type="Node" parent="States"]
 
-script = ExtResource( 15 )
+script = ExtResource( 14 )
 
 [node name="LightAttack" type="Node" parent="States"]
 
-script = ExtResource( 16 )
+script = ExtResource( 15 )
 
 [node name="HeavyAttack" type="Node" parent="States"]
 
-script = ExtResource( 17 )
+script = ExtResource( 16 )
 
 [node name="Block" type="Node" parent="States"]
 
-script = ExtResource( 18 )
+script = ExtResource( 17 )
 
 
