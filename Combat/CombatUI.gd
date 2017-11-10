@@ -5,12 +5,18 @@ export(Texture) var water_texture
 export(Texture) var air_texture
 export(Texture) var earth_texture
 
+var player
 var charge_label
 var charge_image
 
 func _ready():
 	charge_label = get_node("TextureRect/Label")
 	charge_image = get_node("TextureRect")
+	player = get_node("../Player")
+	
+#TODO: Change to use signals.
+func _process(delta):
+	set_charges(player.combat_system.charges)
 
 func set_charges(value):
 	charge_label.set_text(str(value))
