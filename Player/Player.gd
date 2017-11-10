@@ -1,7 +1,6 @@
 extends KinematicBody2D
 
 #player components
-onready var character = get_node("Character")
 onready var combat_system = get_node("CombatCore")
 onready var sprite = get_node("PlayerSprite")
 
