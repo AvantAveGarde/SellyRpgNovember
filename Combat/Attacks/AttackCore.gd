@@ -12,17 +12,34 @@ var element_sub = []
 var source
 
 export var duration = 5.0
-export var base_damage = 1
-export var elemental_damage = 1
-export var penetration = 1
+export var damage_base = 1
+export var damage_elemental = 1
+export var damage_penetration = 1
 
 func _ready():
-	damage_shape = get_node(damage_shape)
-	
-	#add_collision_exception_with(KinematicBody2d)
-	damage_shape.connect("body_entered", self, "on_collide_with_body")
 	pass
-	
+
+func set_source(character):
+	source = character
+
+func set_duration(time):
+	duration = time
+
+func set_base_damage(damage):
+	damage_base = damage
+
+func set_elemental_damage(damage):
+	damage_elemental = damage
+
+func set_penetration(penetration):
+	damage_penetration = penetration
+
+func set_elements(elements):
+	element_sub = elements
+
+func add_element(element):
+	element_sub.append(element)
+
 func _process(delta):
 	check_duration(delta)
 	update_movement(delta)
@@ -36,7 +53,7 @@ func update_movement(delta):
 	pass
 
 func on_collide_with_body(body):
-	if body: #TODO: check what body it is, and if its enemy
+	if body != source: #TODO: check what body it is, and if its enemy
 		var response = body.combat_system.get_block_state(self)
 		if response == 0: # actor damaged
 			on_actor_damaged(body)
@@ -63,15 +80,15 @@ func on_actor_special(body, response):
 func on_damage(source, damage):
 	#character.damage(damage)
 	pass
-	
+
 func kill():
 	self.queue_free()
 
 func get_total_damage():
 	var damage = 0
 	if !is_magic_attack:
-		damage += base_damage
+		damage += damage_base
 	if element_main:
-		damage += elemental_damage
-	damage += elemental_damage * element_sub.size()
+		damage += damage_elemental
+	damage += damage_elemental * element_sub.size()
 	return damage

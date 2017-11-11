@@ -1,11 +1,9 @@
 extends Node
 
-var player
+var actor
 
 func _ready():
-	
-	player = get_node("../..")
-	
+	actor = get_node("../..")
 	set_process(false)
 	set_physics_process(false)
 	set_process_input(false)
@@ -16,5 +14,11 @@ func on_enter():
 func on_exit():
 	pass
 	
-func process(flags, delta):
+func process(delta, flags):
+	pass
+
+func on_animation_finished():
+	pass
+
+func on_frame_changed():
 	pass

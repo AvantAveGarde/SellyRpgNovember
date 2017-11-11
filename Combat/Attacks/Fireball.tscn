@@ -32,15 +32,15 @@ __meta__ = {
 "_edit_group_": true
 }
 element_main = 0
-is_ranged_attack = false
+is_ranged_attack = true
 is_magic_attack = false
 is_charged_atack = true
 is_parryable = false
 damage_shape = NodePath("DamageZone")
 duration = 5.0
-base_damage = 1
-elemental_damage = 1
-penetration = 1
+damage_base = 1
+damage_elemental = 1
+damage_penetration = 1
 move_speed = 200
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]

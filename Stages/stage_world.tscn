@@ -49,4 +49,3 @@ position = Vector2( 172.999, 199.999 )
 [connection signal="move" from="Player" to="." method="update_camera"]
 
 
-[editable path="Player"]
