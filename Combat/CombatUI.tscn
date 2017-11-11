@@ -1,18 +1,15 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Combat/CombatUI.gd" type="Script" id=1]
-[ext_resource path="res://Combat/TempTypeF.png" type="Texture" id=2]
-[ext_resource path="res://Combat/TempType.png" type="Texture" id=3]
-[ext_resource path="res://Combat/TempTypeA.png" type="Texture" id=4]
-[ext_resource path="res://Combat/TempTypeE.png" type="Texture" id=5]
-[ext_resource path="res://Combat/Pixeled.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Combat/TempType.png" type="Texture" id=2]
+[ext_resource path="res://Fonts/Munro.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 
-size = 38
+size = 37
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 6 )
+font_data = ExtResource( 3 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [node name="CombatUI" type="Control"]
@@ -30,10 +27,6 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 script = ExtResource( 1 )
 _sections_unfolded = [ "Anchor" ]
-fire_texture = ExtResource( 2 )
-water_texture = ExtResource( 3 )
-air_texture = ExtResource( 4 )
-earth_texture = ExtResource( 5 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 
@@ -50,7 +43,7 @@ rect_clip_content = false
 mouse_filter = 1
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 3 )
+texture = ExtResource( 2 )
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="TextureRect"]
@@ -59,17 +52,17 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 40.0
-margin_top = 5.0
-margin_right = 95.0
-margin_bottom = 112.0
+margin_left = 6.0
+margin_top = 12.0
+margin_right = 132.0
+margin_bottom = 119.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 1 )
-text = "0"
+text = "9999999"
 align = 1
 valign = 1
 percent_visible = 1.0
