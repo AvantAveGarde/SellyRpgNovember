@@ -17,6 +17,9 @@ export var damage_elemental = 1
 export var damage_penetration = 1
 
 func _ready():
+	if damage_shape:
+		damage_shape = get_node(damage_shape)
+		damage_shape.connect("body_entered", self, "on_collide_with_body")
 	pass
 
 func set_source(character):
