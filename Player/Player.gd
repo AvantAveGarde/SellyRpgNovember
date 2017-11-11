@@ -5,7 +5,7 @@ onready var combat_system = get_node("CombatCore")
 onready var sprite = get_node("PlayerSprite")
 
 #player states
-enum StateID {IDLE, MOVING, LIGHT_ATTACK, HEAVY_ATTACK, BLOCK, PARRY}
+enum StateID {IDLE, MOVING, LIGHT_ATTACK, HEAVY_ATTACK, BLOCK}
 onready var States = {
 	IDLE : get_node("States/Idle"),
 	MOVING: get_node("States/Moving"),
@@ -18,7 +18,6 @@ enum InputFlags {
 	F_LIGHT_ATTACK = 1 << 0,
 	F_HEAVY_ATTACK = 1 << 1,
 	F_BLOCK = 1 << 2,
-	F_PARRY = 1 << 3,
 	F_RANGED_ATTACK = 1 << 4,
 	F_ABSORB = 1 << 5,
 	F_NORTH = 1 << 6,
@@ -42,6 +41,7 @@ var current_state
 #TODO:  consider making movement variables part of the movement state
 export var move_speed = 200
 var velocity = Vector2()
+signal move
 
 #attack variables
 #TODO:  Possibly collapse thresholds into a single variable
@@ -51,7 +51,6 @@ var charge_time_attack = 0.0
 var charge_time_block = 0.0
 
 #animation constants
-#TODO:  Consider moving anim consts into state where they are needed
 var facing_direction
 
 const n_west = "NorthWest"
@@ -76,7 +75,6 @@ const light_attack_anim = "LightAttack"
 const heavy_attack_anim = "HeavyAttack"
 const ranged_attack_anim = "RangedAttack"
 const block_anim = "Block"
-const parry_anim = "Parry"
 
 
 func _ready():
@@ -84,7 +82,7 @@ func _ready():
 	current_state = States[IDLE]
 
 func _process(delta):
-
+	emit_signal("move")
 	var flags = 0x0
 
 	if Input.is_action_pressed("ui_right"):

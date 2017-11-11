@@ -64,5 +64,6 @@ func process(flags, delta):
 	
 	player.move_and_slide(player.velocity)
 	
+	
 	if player.velocity == Vector2():
 		player.change_state(player.IDLE)

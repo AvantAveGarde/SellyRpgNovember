@@ -21,12 +21,16 @@ _sections_unfolded = [ "Resource" ]
 
 [node name="Fireball" type="KinematicBody2D"]
 
+position = Vector2( 497.013, 308.71 )
 input_pickable = false
 collision_layer = 0
 collision_mask = 0
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
 element_main = 0
 is_ranged_attack = false
 is_magic_attack = false
@@ -48,7 +52,6 @@ _sections_unfolded = [ "Transform" ]
 
 frames = SubResource( 2 )
 animation = "default"
-frame = 1
 playing = true
 
 [node name="DamageZone" type="Area2D" parent="."]

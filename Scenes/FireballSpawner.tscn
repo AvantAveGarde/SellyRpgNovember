@@ -4,6 +4,7 @@
 
 [node name="FireballSpawner" type="Position2D"]
 
+position = Vector2( 9.92752, 8.12253 )
 script = ExtResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]

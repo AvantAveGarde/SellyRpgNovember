@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="SellyRPG"
-run/main_scene="res://Stages/stage_title_screen.tscn"
+run/main_scene="res://Stages/stage_world.tscn"
 config/icon="res://icon.png"
 
 [autoload]

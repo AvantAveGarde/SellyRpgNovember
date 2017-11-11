@@ -10,6 +10,7 @@ export var block_angle = 45
 
 onready var health = get_max_health()
 onready var charges = get_max_charges()
+var fireball = preload("res://Combat/Attacks/Fireball.tscn")
 
 
 
@@ -71,8 +72,6 @@ func is_blocking():
 	return false #get_parent().current_state == get_parent().StateID.BLOCK
 
 # check if the character is parrying
-func is_parrying():
-	return false #get_parent().current_state == get_parent().StateID.BLOCK
 
 # A quick check if the attack is within the block_angle limits
 # TODO everything
@@ -95,12 +94,14 @@ func do_light_attack():
 func do_heavy_attack():
 	if can_use_charge_attack(1):
 		consume_charges(1)
+		
 		print("heavy attack")
 
 # perform a charged range attack
 func do_ranged_attack():
 	if can_use_charge_attack(1):
 		consume_charges(1)
+		
 		print("heavy attack")
 
 # perform a block

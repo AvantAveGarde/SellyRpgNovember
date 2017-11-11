@@ -9,6 +9,7 @@
 [node name="world" type="Node"]
 
 script = ExtResource( 1 )
+_sections_unfolded = [ "Pause" ]
 
 [node name="TileMap" type="TileMap" parent="."]
 
@@ -36,15 +37,16 @@ __meta__ = {
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 
-editor/display_folded = true
 position = Vector2( 512, 300 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="FireballSpawner" parent="." instance=ExtResource( 4 )]
 
-position = Vector2( 355, 374 )
+position = Vector2( 172.999, 199.999 )
 
 [node name="CombatUI" parent="." instance=ExtResource( 5 )]
+
+[connection signal="move" from="Player" to="." method="update_camera"]
 
 
 [editable path="Player"]
