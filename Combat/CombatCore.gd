@@ -109,10 +109,6 @@ func do_ranged_attack():
 func do_block():
 	print("blocking")
 
-# perform a parry
-func do_parry():
-	print("parry")
-
 # absorb an attack
 func do_absorb():
 	print("absorb")

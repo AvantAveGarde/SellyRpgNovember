@@ -61,9 +61,7 @@ func process(flags, delta):
 	
 	#TODO:  Consider acceleration based movement rather than constant speed
 	player.velocity = input.normalized() * player.move_speed
-	
 	player.move_and_slide(player.velocity)
-	
 	
 	if player.velocity == Vector2():
 		player.change_state(player.IDLE)

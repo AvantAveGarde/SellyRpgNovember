@@ -41,6 +41,7 @@ func regen_charges(delta):
 
 func process_input(delta):
 	if Input.is_action_pressed("attack"):
+		current_action == Action.LIGHT_ATTACK
 		button_hold_attack(delta)
 		
 	if Input.is_action_just_released("attack"):

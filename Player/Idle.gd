@@ -49,6 +49,8 @@ func process(flags, delta):
 	#Attack Input
 
 	if flags & player.F_ATTACK_HELD == player.F_ATTACK_HELD:
+		
+		player.sprite.play("ChargeAttack")
 		player.charge_time_attack += delta
 
 	if flags & player.F_ATTACK_RELEASED == player.F_ATTACK_RELEASED:
