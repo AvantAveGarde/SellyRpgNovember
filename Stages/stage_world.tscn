@@ -36,6 +36,7 @@ __meta__ = {
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 
+editor/display_folded = true
 position = Vector2( 512, 300 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
