@@ -18,39 +18,39 @@ func process(delta):
 	else:
 		input.y = 0
 	
+	var velocity = input.normalized() * actor.move_speed
 	#movement animation
 	#Horizontal
-	if actor.velocity.x != 0 && actor.velocity.y == 0:
-		if actor.velocity.x > 0:
-			actor.sprite.play(actor.east)
-			actor.facing_direction = "east"
+	if velocity.x != 0 && velocity.y == 0:
+		if velocity.x > 0:
+			actor.facing_direction = actor.DIRECTIONS.E
+			update_animation()
 		else:
-			actor.sprite.play(actor.west)
-			actor.facing_direction = "west"
+			actor.facing_direction = actor.DIRECTIONS.W
+			update_animation()
 	#Vertical
-	if  actor.velocity.y != 0 && actor.velocity.x == 0:
-		if actor.velocity.y > 0:
-			actor.sprite.play(actor.south)
-			actor.facing_direction = "south"
+	if  velocity.y != 0 && velocity.x == 0:
+		if velocity.y > 0:
+			actor.facing_direction = actor.DIRECTIONS.S
+			update_animation()
 		else:
-			actor.sprite.play(actor.north)
-			actor.facing_direction = "north"
+			actor.facing_direction = actor.DIRECTIONS.N
+			update_animation()
 	#Diagonal
-	if actor.velocity.y != 0 && actor.velocity.x != 0:
-		if actor.velocity.x > 0 && actor.velocity.y > 0:
-			actor.sprite.play(actor.s_east)
-			actor.facing_direction = "s_east"
-		elif actor.velocity.x < 0 && actor.velocity.y > 0:
-			actor.sprite.play(actor.s_west)
-			actor.facing_direction = "s_west"
-		elif actor.velocity.x > 0 && actor.velocity.y < 0:
-			actor.sprite.play(actor.n_east)
-			actor.facing_direction = "n_east"
-		elif actor.velocity.x < 0 && actor.velocity.y < 0:
-			actor.sprite.play(actor.n_west)
-			actor.facing_direction = "n_west"
+	if velocity.y != 0 && velocity.x != 0:
+		if velocity.x > 0 && velocity.y > 0:
+			actor.facing_direction = actor.DIRECTIONS.SE
+			update_animation()
+		elif velocity.x < 0 && velocity.y > 0:
+			actor.facing_direction = actor.DIRECTIONS.SW
+			update_animation()
+		elif velocity.x > 0 && velocity.y < 0:
+			actor.facing_direction = actor.DIRECTIONS.NE
+			update_animation()
+		elif velocity.x < 0 && velocity.y < 0:
+			actor.facing_direction = actor.DIRECTIONS.NW
+			update_animation()
 	#TODO:  Consider acceleration based movement rather than constant speed
-	actor.velocity = input.normalized() * actor.move_speed
-	actor.move_and_slide(actor.velocity)
-	if actor.velocity == Vector2():
-		actor.change_state("Idle")
+	actor.move_and_slide(velocity)
+	if velocity == Vector2():
+		actor.change_state(default_animation_name)

@@ -39,7 +39,6 @@ __meta__ = {
 [node name="Player" parent="." instance=ExtResource( 3 )]
 
 position = Vector2( 512, 300 )
-_sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="FireballSpawner" parent="." instance=ExtResource( 4 )]
 

@@ -8,11 +8,16 @@ export var attack_duration = 0
 var attack_instance
 
 func on_enter():
+	.on_enter()
 	if attack_begin_at_frame == 0:
 		spawn_attack()
 
+func on_exit():
+	if attack_end_at_frame > 0:
+		kill_attack()
+
 func on_animation_finished():
-	actor.change_state("Idle")
+	actor.change_state(default_animation_name)
 
 func on_frame_changed():
 	if actor.sprite.frame == attack_begin_at_frame:

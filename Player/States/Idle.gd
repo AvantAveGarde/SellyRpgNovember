@@ -1,28 +1,5 @@
 extends 'res://Scripts/StateCore.gd'
 
-func on_enter():
-	#TODO:  Directional idle animations?
-	#actor.sprite.play(actor.idle_anim)
-	if(actor.facing_direction == "north"):
-		actor.sprite.play(actor.idle_north)
-	elif(actor.facing_direction == "n_east"):
-		actor.sprite.play(actor.idle_north_east)
-	elif(actor.facing_direction == "east"):
-		actor.sprite.play(actor.idle_east)
-	elif(actor.facing_direction == "s_east"):
-		actor.sprite.play(actor.idle_south_east)
-	elif(actor.facing_direction == "south"):
-		actor.sprite.play(actor.idle_south)
-	elif(actor.facing_direction == "s_west"):
-		actor.sprite.play(actor.idle_south_west)
-	elif(actor.facing_direction == "west"):
-		actor.sprite.play(actor.idle_west)
-	elif(actor.facing_direction == "n_west"):
-		actor.sprite.play(actor.idle_north_west)
-	else:
-		actor.sprite.play(actor.idle_south)
-	.on_enter()
-
 func process(delta):
 	var flags = actor.get_input()
 	#Movement Input

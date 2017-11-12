@@ -1,6 +1,6 @@
 extends CollisionObject2D
 
-export(int, "None", "Fire", "Water", "Earth", "Wind") var element_main
+export(int, "None", "Fire", "Water", "Earth", "Wind") var element_main = 0
 export var is_ranged_attack = false
 export var is_magic_attack = false
 export var is_charged_atack = false
@@ -21,6 +21,9 @@ func _ready():
 		damage_shape = get_node(damage_shape)
 		damage_shape.connect("body_entered", self, "on_collide_with_body")
 	pass
+
+func _process(delta):
+	check_duration(delta)
 
 func set_source(character):
 	source = character
@@ -43,23 +46,25 @@ func set_elements(elements):
 func add_element(element):
 	element_sub.append(element)
 
-func _process(delta):
-	check_duration(delta)
-
 func check_duration(delta):
 	duration -= delta
 	if duration <= 0:
 		kill()
 
-func on_collide_with_body(body):
-	if body != source:
-		actor_damage(body)
+func on_collide_with_body(target):
+	if target != source:
+		actor_damage(target)
 
-func actor_damage(body):
-	body.on_damage(self)
+func actor_damage(target):
+	target.on_damage(self)
+
+func on_actor_damaged(target):
 	kill()
 
-func on_actor_blocked(body):
+func on_actor_blocked(target):
+	kill()
+
+func on_actor_ansorbed(target):
 	kill()
 
 func on_damage(source, damage):

@@ -7,35 +7,30 @@ export(String) var default_state = "Idle"
 var AnimationStates = { }
 
 var current_state
-export(int, 1000) var move_speed = 200
 export(int, 100) var max_health = 10
 onready var health = get_max_health()
-export(int, 10) var armor = 0
 export(int, 10) var max_charges = 5
-onready var charges = get_max_charges()
+onready var charges = max_charges
+
+export(int, 1000) var move_speed = 200
+
+export(int, 10) var armor = 0
+export(int, 10) var block = 3
 export(int, 180) var block_angle = 45
 
-const n_west = "NorthWest"
-const north = "North"
-const n_east = "NorthEast"
-const south = "South"
-const s_east = "SouthEast"
-const s_west = "SouthWest"
-const west = "West"
-const east = "East"
+const DIRECTIONS = {
+	N = "N",
+	NE = "NE",
+	E = "E",
+	SE = "SE",
+	S = "S",
+	SW = "SW",
+	W = "W",
+	NW = "NW"
+}
 
 #animation constants
-var facing_direction = south
-var velocity = Vector2()
-
-const idle_north = "IdleNorth"
-const idle_north_east = "IdleNorthEast"
-const idle_east = "IdleEast"
-const idle_south_east = "IdleSouthEast"
-const idle_south = "IdleSouth"
-const idle_south_west = "IdleSouthWest"
-const idle_west = "IdleWest"
-const idle_north_west = "IdleNorthWest"
+var facing_direction = DIRECTIONS.S
 
 func _ready():
 	sprite = get_node(sprite)
@@ -50,6 +45,18 @@ func _ready():
 func _process(delta):
 	current_state.process(delta)
 
+func get_max_health():
+	return max_health
+
+func get_move_speed():
+	return move_speed
+
+func get_armor():
+	return armor
+
+func get_block():
+	return block
+
 func change_state(state_name):
 	current_state.on_exit()
 	current_state = AnimationStates[state_name]
@@ -62,23 +69,17 @@ func on_frame_changed():
 	current_state.on_frame_changed()
 
 func on_damage(attack):
-	health -= attack.get_total_damage()
-	if (health <= 0):
-		on_kill()
-		#emit_signal("die")
+	current_state.on_damage(attack)
+
+func on_collide(target):
+	current_state.on_collide(target)
 
 func on_kill():
+	#emit_signal("die")
 	self.queue_free()
 
 func on_absorb(attack):
 	pass
-
-func get_max_health():
-	return max_health
-
-# Returns the number of slots you can absorb elements into
-func get_max_charges():
-	return max_charges
 
 # Check if we can execute that charged attack
 func can_use_charge_attack(charges_required):
