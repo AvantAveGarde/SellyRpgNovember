@@ -1,4 +1,4 @@
-extends 'res://Player/States/State.gd'
+extends 'res://Scripts/StateCore.gd'
 
 func process(delta):
 	var flags = actor.get_input()
@@ -53,4 +53,4 @@ func process(delta):
 	actor.velocity = input.normalized() * actor.move_speed
 	actor.move_and_slide(actor.velocity)
 	if actor.velocity == Vector2():
-		actor.change_state(actor.IDLE)
+		actor.change_state("Idle")

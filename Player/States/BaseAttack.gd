@@ -1,4 +1,4 @@
-extends "res://Player/States/State.gd"
+extends "res://Scripts/StateCore.gd"
 
 export(PackedScene) var attack_scene
 export var attack_begin_at_frame = 0
@@ -12,7 +12,7 @@ func on_enter():
 		spawn_attack()
 
 func on_animation_finished():
-	actor.change_state(actor.IDLE)
+	actor.change_state("Idle")
 
 func on_frame_changed():
 	if actor.sprite.frame == attack_begin_at_frame:

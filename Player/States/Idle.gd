@@ -1,4 +1,4 @@
-extends 'res://Player/States/State.gd'
+extends 'res://Scripts/StateCore.gd'
 
 func on_enter():
 	#TODO:  Directional idle animations?
@@ -41,17 +41,17 @@ func process(delta):
 		input.y = 0
 
 	if input != Vector2():
-		actor.change_state(actor.MOVING)
+		actor.change_state("Moving")
 
 	#Attack Input
 	if flags & actor.F_ATTACK_HELD == actor.F_ATTACK_HELD:
 		actor.charge_time_attack += delta
 	if flags & actor.F_ATTACK_RELEASED == actor.F_ATTACK_RELEASED:
-		if actor.charge_time_attack > actor.charge_threshold_attack && actor.combat_system.charges > 0:
-			actor.change_state(actor.HEAVY_ATTACK)
+		if actor.charge_time_attack > actor.charge_threshold_attack && actor.charges > 0:
+			actor.change_state("HeavyAttack")
 		else:
 			#next_action = Action.LIGHT_ATTACK
-			actor.change_state(actor.LIGHT_ATTACK)
+			actor.change_state("LightAttack")
 		actor.charge_time_attack = 0.0
 	if flags & actor.F_BLOCK_HELD == actor.F_BLOCK_HELD:
-		actor.change_state(actor.BLOCK)
+		actor.change_state("Block")

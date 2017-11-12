@@ -6,4 +6,4 @@ func on_enter():
 	.on_enter()
 
 func on_animation_finished():
-	actor.change_state(actor.IDLE)
+	actor.change_state("Idle")

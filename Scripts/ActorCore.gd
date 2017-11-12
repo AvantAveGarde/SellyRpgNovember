@@ -2,17 +2,18 @@ extends KinematicBody2D
 
 export(NodePath) var sprite
 export(NodePath) var animation_states_node
-export(String) var default_state
+export(String) var default_state = "Idle"
 
 var AnimationStates = { }
 
 var current_state
-export var move_speed = 200
-export var health = 10
-export var armor = 0
-
-#animation constants
-var facing_direction
+export(int, 1000) var move_speed = 200
+export(int, 100) var max_health = 10
+onready var health = get_max_health()
+export(int, 10) var armor = 0
+export(int, 10) var max_charges = 5
+onready var charges = get_max_charges()
+export(int, 180) var block_angle = 45
 
 const n_west = "NorthWest"
 const north = "North"
@@ -22,6 +23,10 @@ const s_east = "SouthEast"
 const s_west = "SouthWest"
 const west = "West"
 const east = "East"
+
+#animation constants
+var facing_direction = south
+var velocity = Vector2()
 
 const idle_north = "IdleNorth"
 const idle_north_east = "IdleNorthEast"
@@ -55,3 +60,32 @@ func on_animation_finished():
 
 func on_frame_changed():
 	current_state.on_frame_changed()
+
+func on_damage(attack):
+	health -= attack.get_total_damage()
+	if (health <= 0):
+		on_kill()
+		#emit_signal("die")
+
+func on_kill():
+	self.queue_free()
+
+func on_absorb(attack):
+	pass
+
+func get_max_health():
+	return max_health
+
+# Returns the number of slots you can absorb elements into
+func get_max_charges():
+	return max_charges
+
+# Check if we can execute that charged attack
+func can_use_charge_attack(charges_required):
+	return charges >= charges_required
+
+# Used to actually use up the charges
+func consume_charges(charges_count):
+	charges -= charges_count
+	if charges < 0:
+		charges = 0

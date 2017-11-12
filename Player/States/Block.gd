@@ -1,4 +1,4 @@
-extends "res://Player/States/State.gd"
+extends "res://Scripts/StateCore.gd"
 
 func on_enter():
 	actor.sprite.play(actor.block_anim)
@@ -6,8 +6,7 @@ func on_enter():
 
 func process(delta):
 	var flags = actor.get_input()
-	if flags & actor.F_BLOCK_HELD == actor.F_BLOCK_HELD:
-		actor.combat_system.do_block()
-		
+	#if flags & actor.F_BLOCK_HELD == actor.F_BLOCK_HELD:
+		#pass
 	if flags & actor.F_BLOCK_RELEASED == actor.F_BLOCK_RELEASED:
-		actor.change_state(actor.IDLE)
+		actor.change_state("Idle")

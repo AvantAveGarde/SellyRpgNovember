@@ -16,7 +16,7 @@ func _ready():
 	
 #TODO: Change to use signals.
 func _process(delta):
-	set_charges(player.combat_system.charges)
+	set_charges(player.charges)
 
 func set_charges(value):
 	charge_label.set_text(str(value))

@@ -45,49 +45,30 @@ func add_element(element):
 
 func _process(delta):
 	check_duration(delta)
-	update_movement(delta)
 
 func check_duration(delta):
 	duration -= delta
 	if duration <= 0:
 		kill()
 
-func update_movement(delta):
-	pass
-
 func on_collide_with_body(body):
-	if body != source: #TODO: check what body it is, and if its enemy
-		#var response = body.combat_system.get_block_state(self)
-		#if response == 0: # actor damaged
-		#	on_actor_damaged(body)
-		#elif response == 1: # actor blocked
-		#	on_actor_blocked(body)
-		#elif response == 2: # actor parried
-		#	on_actor_parried(body)
-		#else: # e.g. going trough the body.
-		#	on_actor_special(body, response)
-		pass
+	if body != source:
+		actor_damage(body)
 
-func on_actor_damaged(body):
-	body.combat_system.damage(source, self)
+func actor_damage(body):
+	body.on_damage(self)
 	kill()
 
 func on_actor_blocked(body):
 	kill()
 
-func on_actor_parried(body):
-	kill()
-	
-func on_actor_special(body, response):
-	pass
-
 func on_damage(source, damage):
-	#character.damage(damage)
-	pass
+	kill()
 
 func kill():
 	self.queue_free()
 
+# TODO split into melee and ranged atacks
 func get_total_damage():
 	var damage = 0
 	if !is_magic_attack:
