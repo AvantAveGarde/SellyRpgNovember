@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://Tilemaps/Test.tres" type="TileSet" id=2]
 [ext_resource path="res://Player/scene_player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/FireballSpawner.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Combat/CombatUI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://NPCs/Enemies/TestEnemy.tscn" type="PackedScene" id=6]
 
 [node name="world" type="Node"]
 
@@ -45,6 +46,11 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 position = Vector2( 172.999, 199.999 )
 
 [node name="CombatUI" parent="." instance=ExtResource( 5 )]
+
+[node name="TestEnemy" parent="." instance=ExtResource( 6 )]
+
+position = Vector2( 399.95, 410.833 )
+default_state = null
 
 [connection signal="move" from="Player" to="." method="update_camera"]
 

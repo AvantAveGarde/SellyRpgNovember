@@ -11,12 +11,6 @@ func on_enter():
 	if attack_begin_at_frame == 0:
 		spawn_attack()
 
-func on_exit():
-	pass
-
-func process(delta, flags):
-	pass
-	
 func on_animation_finished():
 	actor.change_state(actor.IDLE)
 

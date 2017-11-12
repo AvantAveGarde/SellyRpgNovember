@@ -4,7 +4,8 @@ func on_enter():
 	actor.sprite.play(actor.block_anim)
 	.on_enter()
 
-func process(delta, flags):
+func process(delta):
+	var flags = actor.get_input()
 	if flags & actor.F_BLOCK_HELD == actor.F_BLOCK_HELD:
 		actor.combat_system.do_block()
 		

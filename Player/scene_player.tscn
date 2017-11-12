@@ -2,26 +2,26 @@
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Combat/CombatCore.gd" type="Script" id=2]
-[ext_resource path="res://Sprites/downleft.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/upright.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/attack1.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/attack2.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/attack3.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/Down.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/downright.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/upright (2).png" type="Texture" id=10]
-[ext_resource path="res://Sprites/downleft (2).png" type="Texture" id=11]
-[ext_resource path="res://Sprites/right (2).png" type="Texture" id=12]
-[ext_resource path="res://Sprites/right.png" type="Texture" id=13]
-[ext_resource path="res://Sprites/downright (2).png" type="Texture" id=14]
-[ext_resource path="res://Sprites/upleft.png" type="Texture" id=15]
-[ext_resource path="res://Sprites/left.png" type="Texture" id=16]
-[ext_resource path="res://Sprites/left2.png" type="Texture" id=17]
-[ext_resource path="res://Sprites/Down (2).png" type="Texture" id=18]
-[ext_resource path="res://Sprites/Up.png" type="Texture" id=19]
-[ext_resource path="res://Sprites/Up (2).png" type="Texture" id=20]
-[ext_resource path="res://Sprites/upleft (2).png" type="Texture" id=21]
-[ext_resource path="res://Sprites/block.png" type="Texture" id=22]
+[ext_resource path="res://Sprites/left.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/left2.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/upleft.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/upright.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/upright (2).png" type="Texture" id=7]
+[ext_resource path="res://Sprites/attack2.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/attack1.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Down.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/right (2).png" type="Texture" id=11]
+[ext_resource path="res://Sprites/right.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/downleft.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/attack3.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/downright.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/upleft (2).png" type="Texture" id=16]
+[ext_resource path="res://Sprites/downright (2).png" type="Texture" id=17]
+[ext_resource path="res://Sprites/Up.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/Up (2).png" type="Texture" id=19]
+[ext_resource path="res://Sprites/block.png" type="Texture" id=20]
+[ext_resource path="res://Sprites/downleft (2).png" type="Texture" id=21]
+[ext_resource path="res://Sprites/Down (2).png" type="Texture" id=22]
 [ext_resource path="res://Player/States/Idle.gd" type="Script" id=23]
 [ext_resource path="res://Player/States/Moving.gd" type="Script" id=24]
 [ext_resource path="res://Player/States/LightAttack.gd" type="Script" id=25]
@@ -34,113 +34,113 @@
 animations = [ {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "IdleSouthWest",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "IdleNorthEast",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ), null ],
-"loop": false,
-"name": "LightAttack",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "ChargeAttack",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 8 ) ],
-"loop": true,
-"name": "IdleSouth",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 9 ) ],
-"loop": true,
-"name": "IdleSouthEast",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ), ExtResource( 10 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "NorthEast",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 3 ), ExtResource( 11 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "SouthWest",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 12 ) ],
-"loop": true,
-"name": "East",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 9 ), ExtResource( 14 ), ExtResource( 9 ) ],
-"loop": true,
-"name": "SouthEast",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 15 ) ],
-"loop": true,
-"name": "IdleNorthWest",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 16 ) ],
-"loop": true,
 "name": "IdleWest",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 16 ), ExtResource( 17 ), ExtResource( 16 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "West",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ), null ],
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "IdleNorthWest",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "NorthEast",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), null ],
+"loop": false,
+"name": "Parry",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "IdleSouth",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 8 ), null ],
+"loop": false,
+"name": "LightAttack",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "East",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 8 ), null ],
 "loop": false,
 "name": "HeavyAttack",
 "speed": 2.0
 }, {
 "frames": [ ExtResource( 13 ) ],
 "loop": true,
-"name": "IdleEast",
+"name": "IdleSouthWest",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ), ExtResource( 5 ), null ],
-"loop": false,
-"name": "Parry",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 18 ), ExtResource( 8 ), ExtResource( 8 ) ],
+"frames": [ ExtResource( 8 ), ExtResource( 14 ) ],
 "loop": true,
-"name": "South",
-"speed": 3.0
+"name": "ChargeAttack",
+"speed": 12.0
 }, {
-"frames": [ ExtResource( 19 ) ],
-"loop": true,
-"name": "IdleNorth",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 19 ) ],
-"loop": true,
-"name": "North",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ), null ],
+"frames": [ ExtResource( 9 ), ExtResource( 8 ), null ],
 "loop": false,
 "name": "RangedAttack",
 "speed": 0.0
 }, {
-"frames": [ ExtResource( 15 ), ExtResource( 21 ), ExtResource( 15 ) ],
+"frames": [ ExtResource( 15 ) ],
+"loop": true,
+"name": "IdleSouthEast",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 16 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "NorthWest",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 22 ) ],
+"frames": [ ExtResource( 15 ), ExtResource( 17 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "SouthEast",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 19 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "North",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "IdleNorthEast",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 18 ) ],
+"loop": true,
+"name": "IdleNorth",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ) ],
 "loop": true,
 "name": "Block",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 21 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "SouthWest",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "IdleEast",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 10 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "South",
+"speed": 3.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -173,8 +173,7 @@ block_angle = 45
 
 scale = Vector2( 0.1, 0.1 )
 frames = SubResource( 1 )
-animation = "ChargeAttack"
-frame = 1
+animation = "South"
 _sections_unfolded = [ "Transform" ]
 
 [node name="collision_shape_2d" type="CollisionShape2D" parent="."]

@@ -23,7 +23,8 @@ func on_enter():
 		actor.sprite.play(actor.idle_south)
 	.on_enter()
 
-func process(delta, flags):
+func process(delta):
+	var flags = actor.get_input()
 	#Movement Input
 	var input = Vector2(0, 0)
 	if flags & actor.F_EAST == actor.F_EAST:

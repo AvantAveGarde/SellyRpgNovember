@@ -1,6 +1,7 @@
 extends 'res://Player/States/State.gd'
 
-func process(delta, flags):
+func process(delta):
+	var flags = actor.get_input()
 	actor.emit_signal("move")
 	#Input
 	var input = Vector2(0, 0)

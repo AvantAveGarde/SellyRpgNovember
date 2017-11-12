@@ -57,15 +57,16 @@ func update_movement(delta):
 
 func on_collide_with_body(body):
 	if body != source: #TODO: check what body it is, and if its enemy
-		var response = body.combat_system.get_block_state(self)
-		if response == 0: # actor damaged
-			on_actor_damaged(body)
-		elif response == 1: # actor blocked
-			on_actor_blocked(body)
-		elif response == 2: # actor parried
-			on_actor_parried(body)
-		else: # e.g. going trough the body.
-			on_actor_special(body, response)
+		#var response = body.combat_system.get_block_state(self)
+		#if response == 0: # actor damaged
+		#	on_actor_damaged(body)
+		#elif response == 1: # actor blocked
+		#	on_actor_blocked(body)
+		#elif response == 2: # actor parried
+		#	on_actor_parried(body)
+		#else: # e.g. going trough the body.
+		#	on_actor_special(body, response)
+		pass
 
 func on_actor_damaged(body):
 	body.combat_system.damage(source, self)

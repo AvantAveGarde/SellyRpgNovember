@@ -74,7 +74,9 @@ func _ready():
 	current_state = States[IDLE]
 
 func _process(delta):
-	#emit_signal("move")
+	current_state.process(delta)
+
+func get_input():
 	var flags = 0x0
 	#movement
 	if Input.is_action_pressed("ui_right"):
@@ -96,7 +98,7 @@ func _process(delta):
 		flags |= F_BLOCK_HELD
 	if Input.is_action_just_released("block"):
 		flags |= F_BLOCK_RELEASED
-	current_state.process(delta, flags)
+	return flags
 
 func change_state(state_id):
 	current_state.on_exit()
