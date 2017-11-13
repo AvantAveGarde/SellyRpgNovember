@@ -23,11 +23,9 @@ func process(delta):
 	if input != Vector2():
 		actor.previous_direction = input
 		actor.move_speed += actor.acceleration * delta
-	
-	#print(actor.move_speed)
 	actor.move_speed = clamp(actor.move_speed, 0, actor.max_speed)
-	
 	var velocity = input.normalized() * actor.move_speed
+	
 	#movement animation
 	#Horizontal
 	if velocity.x != 0 && velocity.y == 0:

@@ -21,13 +21,10 @@ func process(delta):
 	else:
 		input.y = 0
 	
-	#Keeping momentum the moment we let go of the move key.
+	#Keeping momentum the moment we let go of the move key. aka deceleration
 	if input == Vector2():
 		actor.move_speed -= actor.deceleration * delta
-	
 	actor.move_speed = clamp(actor.move_speed, 0, actor.max_speed)
-	
-	#print(actor.previous_direction)
 	var velocity = actor.previous_direction.normalized() * actor.move_speed
 	actor.move_and_slide(velocity)
 	
