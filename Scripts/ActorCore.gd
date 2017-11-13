@@ -12,7 +12,8 @@ onready var health = get_max_health()
 export(int, 10) var max_charges = 5
 onready var charges = max_charges
 
-export(int, 1000) var move_speed = 200
+export(int, 1000) var move_speed = 0
+var previous_direction = Vector2(0, 0)
 
 export(int, 10) var armor = 0
 export(int, 10) var block = 3

@@ -5,6 +5,7 @@ func process(delta):
 	actor.emit_signal("move")
 	#Input
 	var input = Vector2(0, 0)
+	
 	if flags & actor.F_EAST == actor.F_EAST:
 		input.x = 1
 	elif flags & actor.F_WEST == actor.F_WEST:
@@ -17,6 +18,14 @@ func process(delta):
 		input.y = 1
 	else:
 		input.y = 0
+	
+	#movement calculations
+	if input != Vector2():
+		actor.previous_direction = input
+		actor.move_speed += actor.acceleration * delta
+	
+	#print(actor.move_speed)
+	actor.move_speed = clamp(actor.move_speed, 0, actor.max_speed)
 	
 	var velocity = input.normalized() * actor.move_speed
 	#movement animation
@@ -50,6 +59,7 @@ func process(delta):
 		elif velocity.x < 0 && velocity.y < 0:
 			actor.facing_direction = actor.DIRECTIONS.NW
 			update_animation()
+			
 	#TODO:  Consider acceleration based movement rather than constant speed
 	actor.move_and_slide(velocity)
 	if velocity == Vector2():

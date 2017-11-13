@@ -16,8 +16,8 @@
 [ext_resource path="res://Sprites/Up (2).png" type="Texture" id=14]
 [ext_resource path="res://Sprites/downleft (2).png" type="Texture" id=15]
 [ext_resource path="res://Sprites/upleft (2).png" type="Texture" id=16]
-[ext_resource path="res://Sprites/right (2).png" type="Texture" id=17]
-[ext_resource path="res://Sprites/right.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/right.png" type="Texture" id=17]
+[ext_resource path="res://Sprites/right (2).png" type="Texture" id=18]
 [ext_resource path="res://Sprites/downright (2).png" type="Texture" id=19]
 [ext_resource path="res://Sprites/left2.png" type="Texture" id=20]
 [ext_resource path="res://Player/States/Idle.gd" type="Script" id=21]
@@ -87,7 +87,7 @@ animations = [ {
 "frames": [ ExtResource( 12 ), ExtResource( 10 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "MovingS",
-"speed": 3.0
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": false,
@@ -107,7 +107,7 @@ animations = [ {
 "frames": [ ExtResource( 8 ), ExtResource( 13 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "MovingNE",
-"speed": 3.0
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": false,
@@ -124,12 +124,12 @@ animations = [ {
 "name": "MovingN",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 6 ), ExtResource( 15 ), ExtResource( 6 ) ],
+"frames": [ ExtResource( 15 ), ExtResource( 6 ), ExtResource( 15 ) ],
 "loop": true,
 "name": "MovingSW",
-"speed": 3.0
+"speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 16 ), ExtResource( 5 ) ],
+"frames": [ ExtResource( 16 ), ExtResource( 5 ), ExtResource( 16 ) ],
 "loop": true,
 "name": "MovingNW",
 "speed": 3.0
@@ -147,7 +147,7 @@ animations = [ {
 "frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 17 ) ],
 "loop": true,
 "name": "MovingE",
-"speed": 3.0
+"speed": 3.01
 }, {
 "frames": [ ExtResource( 11 ) ],
 "loop": true,
@@ -159,10 +159,10 @@ animations = [ {
 "name": "HeavyAttackE",
 "speed": 2.0
 }, {
-"frames": [ ExtResource( 7 ), ExtResource( 19 ), ExtResource( 7 ) ],
+"frames": [ ExtResource( 19 ), ExtResource( 7 ), ExtResource( 19 ) ],
 "loop": true,
 "name": "MovingSE",
-"speed": 3.0
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": false,
@@ -259,10 +259,10 @@ animations = [ {
 "name": "RangedAttackN",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 20 ), ExtResource( 2 ) ],
+"frames": [ ExtResource( 20 ), ExtResource( 2 ), ExtResource( 20 ) ],
 "loop": true,
 "name": "MovingW",
-"speed": 3.0
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 18 ) ],
 "loop": true,
@@ -291,7 +291,7 @@ animation_states_node = NodePath("States")
 default_state = "Idle"
 max_health = 10
 max_charges = 5
-move_speed = 200
+move_speed = 0
 armor = 0
 block = 3
 block_angle = 45
