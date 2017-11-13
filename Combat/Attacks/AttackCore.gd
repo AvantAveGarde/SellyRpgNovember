@@ -4,7 +4,6 @@ export(int, "None", "Fire", "Water", "Earth", "Wind") var element_main = 0
 export var is_ranged_attack = false
 export var is_magic_attack = false
 export var is_charged_atack = false
-export var is_parryable = false
 
 export(NodePath) var damage_shape
 

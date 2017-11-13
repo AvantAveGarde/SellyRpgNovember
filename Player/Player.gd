@@ -33,7 +33,6 @@ func _ready():
 	viewport = get_viewport()
 
 func _process(delta):
-
 	current_state.process(delta)
 
 func get_input():
