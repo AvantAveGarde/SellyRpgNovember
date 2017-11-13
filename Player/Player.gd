@@ -29,27 +29,6 @@ func _ready():
 
 func _process(delta):
 
-	var angle = position.angle_to_point(viewport.get_mouse_position())
-
-	if angle > 3 * PI/8 and angle <= 5 * PI/8:
-		print("North")
-	elif angle >  5 * PI/8 and angle <= 7 * PI/8:
-		print("NorthEast")
-	elif (angle > 7 * PI/8 and angle <= PI) or (angle > -PI and angle <= -7 *PI/8):
-		print("East")
-	elif angle > -7 * PI/8 and angle <= -5 * PI/8:
-		print("SouthEast")
-	elif angle > -5 * PI/8 and angle <= -3 * PI/8:
-		print("South")
-	elif (angle > -3 * PI/8 and angle <= -PI/8):
-		print("SouthWest")
-	elif (angle > -PI/8 and angle <= 0) or (angle >= 0 and angle <= PI/8):
-		print("West")
-	elif (angle > PI/8 and angle <= 3 * PI/8):
-		print("NorthWest")
-
-	#print(rad2deg(angle))
-
 	current_state.process(delta)
 
 func get_input():
