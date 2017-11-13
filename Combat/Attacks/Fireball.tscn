@@ -35,7 +35,6 @@ element_main = 0
 is_ranged_attack = true
 is_magic_attack = false
 is_charged_atack = true
-is_parryable = false
 damage_shape = NodePath("DamageZone")
 duration = 5.0
 damage_base = 1

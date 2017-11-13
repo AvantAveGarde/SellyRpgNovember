@@ -10,7 +10,7 @@ var current_state
 export(int, 100) var max_health = 10
 onready var health = get_max_health()
 export(int, 10) var max_charges = 5
-onready var charges = max_charges
+onready var charges = 0#max_charges
 
 export(int, 1000) var move_speed = 0
 var previous_direction = Vector2(0, 0)
@@ -80,7 +80,8 @@ func on_kill():
 	self.queue_free()
 
 func on_absorb(attack):
-	pass
+	if charges < max_charges:
+		charges = charges + 1
 
 # Check if we can execute that charged attack
 func can_use_charge_attack(charges_required):

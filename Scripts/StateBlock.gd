@@ -10,3 +10,6 @@ func on_damage(attack):
 	attack.on_actor_blocked(actor)
 	if (actor.health <= 0):
 		actor.on_kill()
+		return
+		
+	actor.on_absorb(attack)

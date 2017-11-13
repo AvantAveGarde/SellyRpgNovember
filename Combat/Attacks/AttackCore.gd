@@ -63,7 +63,7 @@ func on_actor_damaged(target):
 func on_actor_blocked(target):
 	kill()
 
-func on_actor_ansorbed(target):
+func on_actor_absorbed(target):
 	kill()
 
 func on_damage(source, damage):

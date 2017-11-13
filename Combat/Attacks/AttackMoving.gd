@@ -7,7 +7,7 @@ func _process(delta):
 	update_movement(delta)
 
 func update_movement(delta):
-	var velocity = Vector2(0, -1)
+	var velocity = Vector2(1, 0)
 	velocity = velocity.rotated(global_rotation)
 	velocity = velocity.normalized() * move_speed
 	move_and_slide(velocity)
