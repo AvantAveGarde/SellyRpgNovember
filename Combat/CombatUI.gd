@@ -7,16 +7,21 @@ extends Control
 
 var player
 var charge_label
+var mouse_cursor
+var viewport
 #var charge_image
 
 func _ready():
 	charge_label = get_node("TextureRect/Label")
+	mouse_cursor = get_node("Cursor")
 	#charge_image = get_node("TextureRect")
 	player = get_node("../Player")
+	viewport = get_viewport()
 	
 #TODO: Change to use signals.
 func _process(delta):
 	set_charges(player.charges)
+	mouse_cursor.set_position(viewport.get_mouse_position())
 
 func set_charges(value):
 	charge_label.set_text(str(value))

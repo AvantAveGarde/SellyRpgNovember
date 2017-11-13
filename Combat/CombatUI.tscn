@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Combat/CombatUI.gd" type="Script" id=1]
 [ext_resource path="res://Combat/TempType.png" type="Texture" id=2]
 [ext_resource path="res://Fonts/Munro.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Combat/cursor.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -69,5 +70,11 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
+
+[node name="Cursor" type="Sprite" parent="."]
+
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Transform" ]
 
 
