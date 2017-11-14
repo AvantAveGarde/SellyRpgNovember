@@ -11,7 +11,7 @@ func _ready():
 	set_process_input(false)
 
 func update_animation():
-	if actor.sprite.animation != animation_name + actor.facing_direction:
+	if actor.sprite && actor.sprite.animation != animation_name + actor.facing_direction:
 		actor.sprite.play(animation_name + actor.facing_direction)
 
 func on_enter():

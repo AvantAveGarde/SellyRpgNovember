@@ -16,8 +16,6 @@ func on_frame_changed():
 	if actor.sprite.frame == attack_begin_at_frame:
 		spawn_attack()
 
-# TODO: Fix the direction
-# For some reason its off by 90°, but I dunno why.
 func spawn_attack():
 	if attack_scene:
 		attack_instance = attack_scene.instance()
@@ -28,4 +26,14 @@ func spawn_attack():
 
 # TODO proper rotation calculation
 func get_attack_rotation():
-	return actor.rotation
+	var degree
+	match actor.facing_direction:
+		"E": degree = 0
+		"SE": degree = 45
+		"S": degree = 90
+		"SW": degree = 135
+		"W": degree = 180
+		"NW": degree = 225
+		"N": degree = 270
+		"NE": degree = 315
+	return deg2rad(degree)

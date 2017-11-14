@@ -2,10 +2,27 @@
 
 [ext_resource path="res://Scripts/FireballSpawner.gd" type="Script" id=1]
 
-[node name="FireballSpawner" type="Position2D"]
+[node name="FireballSpawner" type="StaticBody2D"]
 
 position = Vector2( 9.92752, 8.12253 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
 script = ExtResource( 1 )
+sprite = NodePath("Sprite")
+states_node = NodePath("States")
+default_state = "Idle"
+max_health = 10
+max_charges = 5
+faction = 2
+move_speed = 0
+armor = 0
+block = 3
+block_angle = 45
 
 [node name="Timer" type="Timer" parent="."]
 

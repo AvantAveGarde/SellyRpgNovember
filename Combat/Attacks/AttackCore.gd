@@ -1,24 +1,24 @@
 extends CollisionObject2D
 
+const actor_class = preload("res://Scripts/ActorCore.gd")
+
 export(int, "None", "Fire", "Water", "Earth", "Wind") var element_main = 0
-export var is_ranged_attack = false
 export var is_magic_attack = false
-export var is_charged_atack = false
 
 export(NodePath) var damage_shape
 
 var element_sub = []
 var source
 
-export var duration = 5.0
-export var damage_base = 1
-export var damage_elemental = 1
-export var damage_penetration = 1
+export(float, 0.1, 30.0) var duration = 5.0
+export(int, 1, 10) var damage_base = 1
+export(int, 1, 10) var damage_elemental = 1
+export(int, 0, 10) var damage_penetration = 1
 
 func _ready():
 	if damage_shape:
 		damage_shape = get_node(damage_shape)
-		damage_shape.connect("body_entered", self, "on_collide_with_body")
+		damage_shape.connect("body_entered", self, "on_body_enter")
 	pass
 
 func _process(delta):
@@ -50,9 +50,10 @@ func check_duration(delta):
 	if duration <= 0:
 		kill()
 
-func on_collide_with_body(target):
-	if target != source:
-		actor_damage(target)
+func on_body_enter(target):
+	if target is actor_class && source is actor_class:
+		if target.faction != source.faction:
+			actor_damage(target)
 
 func actor_damage(target):
 	target.on_damage(self)
@@ -79,5 +80,5 @@ func get_total_damage():
 		damage += damage_base
 	if element_main:
 		damage += damage_elemental
-	damage += damage_elemental * element_sub.size()
+		damage += damage_elemental * element_sub.size()
 	return damage

@@ -1,14 +1,14 @@
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/ActorCore.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Down (2).png" type="Texture" id=2]
-[ext_resource path="res://Sprites/downright.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/upleft.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/upright.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/downleft.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/left.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/Up.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/right (2).png" type="Texture" id=9]
+[ext_resource path="res://Sprites/upleft.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Down (2).png" type="Texture" id=3]
+[ext_resource path="res://Sprites/upright.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/downleft.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/left.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Up.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/right (2).png" type="Texture" id=8]
+[ext_resource path="res://Sprites/downright.png" type="Texture" id=9]
 [ext_resource path="res://Scripts/StateCore.gd" type="Script" id=10]
 
 [sub_resource type="SpriteFrames" id=1]
@@ -16,42 +16,42 @@
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "IdleS",
+"name": "IdleNW",
 "speed": 0.0
 }, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "IdleSE",
+"name": "IdleS",
 "speed": 0.0
 }, {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
-"name": "IdleNW",
+"name": "IdleNE",
 "speed": 0.0
 }, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
-"name": "IdleNE",
+"name": "IdleSW",
 "speed": 0.0
 }, {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
-"name": "IdleSW",
+"name": "IdleW",
 "speed": 0.0
 }, {
 "frames": [ ExtResource( 7 ) ],
 "loop": true,
-"name": "IdleW",
+"name": "IdleN",
 "speed": 0.0
 }, {
 "frames": [ ExtResource( 8 ) ],
 "loop": true,
-"name": "IdleN",
+"name": "IdleE",
 "speed": 0.0
 }, {
 "frames": [ ExtResource( 9 ) ],
 "loop": true,
-"name": "IdleE",
+"name": "IdleSE",
 "speed": 0.0
 } ]
 
@@ -72,6 +72,7 @@ states_node = NodePath("States")
 default_state = "Idle"
 max_health = 10
 max_charges = 5
+faction = 1
 move_speed = 200
 armor = 0
 block = 3

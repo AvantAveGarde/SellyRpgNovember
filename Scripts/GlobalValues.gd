@@ -1,6 +1,7 @@
 extends Node
 
-enum Element {FIRE, WATER, AIR, EARTH }
+enum Element {FIRE, WATER, AIR, EARTH}
+enum Factions {PLAYER, ALLY, ENEMY}
 
 func _ready():
 	# Called every time the node is added to the scene.
