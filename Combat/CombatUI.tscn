@@ -29,7 +29,7 @@ size_flags_vertical = 1
 script = ExtResource( 1 )
 _sections_unfolded = [ "Anchor" ]
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="ChargeTexture" type="TextureRect" parent="."]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -46,8 +46,56 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 texture = ExtResource( 2 )
 stretch_mode = 0
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Label" type="Label" parent="TextureRect"]
+[node name="ChargeLabel" type="Label" parent="ChargeTexture"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 6.0
+margin_top = 12.0
+margin_right = 132.0
+margin_bottom = 119.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+text = "9999999"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="HealthTexture" type="TextureRect" parent="."]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 19.0
+margin_top = 469.0
+margin_right = 147.0
+margin_bottom = 597.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 2 )
+stretch_mode = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="HealthLabel" type="Label" parent="HealthTexture"]
 
 anchor_left = 0.0
 anchor_top = 0.0

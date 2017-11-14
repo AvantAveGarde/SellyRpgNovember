@@ -18,6 +18,10 @@ config/icon="res://icon.png"
 
 GlobalValues="*res://Scripts/GlobalValues.gd"
 
+[display]
+
+mouse_cursor/custom_image="res://Combat/cursor.png"
+
 [gdnative]
 
 singletons=[  ]
