@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Fonts/Munro.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/BlueColor.tres" type="StyleBox" id=2]
 [ext_resource path="res://UI/RedColor.tres" type="StyleBox" id=3]
+[ext_resource path="res://Scripts/MenuButtons.gd" type="Script" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -12,7 +13,7 @@ use_filter = false
 font_data = ExtResource( 1 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 
 size = 15
 use_mipmaps = false
@@ -20,12 +21,9 @@ use_filter = false
 font_data = ExtResource( 1 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-<<<<<<< HEAD
-[sub_resource type="DynamicFont" id=2]
-=======
-[sub_resource type="Theme" id=4]
+[sub_resource type="Theme" id=3]
 
-default_font = SubResource( 3 )
+default_font = SubResource( 2 )
 Button/colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 Button/colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
@@ -39,8 +37,7 @@ Button/styles/normal = ExtResource( 2 )
 Button/styles/pressed = ExtResource( 2 )
 _sections_unfolded = [ "Button", "Button/styles" ]
 
-[sub_resource type="DynamicFont" id=1]
->>>>>>> 6743c1917696093a867a9f376c6199f30cc98073
+[sub_resource type="DynamicFont" id=4]
 
 size = 25
 use_mipmaps = false
@@ -65,13 +62,8 @@ rect_clip_content = false
 mouse_filter = 2
 size_flags_horizontal = 1
 size_flags_vertical = 4
-<<<<<<< HEAD
 custom_fonts/font = SubResource( 1 )
-text = "Selly RPG November"
-=======
-custom_fonts/font = SubResource( 2 )
 text = "Selly RPG"
->>>>>>> 6743c1917696093a867a9f376c6199f30cc98073
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -79,6 +71,7 @@ _sections_unfolded = [ "Rect", "custom_fonts" ]
 
 [node name="MenuButtons" type="VBoxContainer" parent="."]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -92,8 +85,9 @@ rect_clip_content = false
 mouse_filter = 1
 size_flags_horizontal = 1
 size_flags_vertical = 3
-theme = SubResource( 4 )
+theme = SubResource( 3 )
 alignment = 0
+script = ExtResource( 4 )
 _sections_unfolded = [ "Rect", "Theme" ]
 
 [node name="NewGame" type="Button" parent="MenuButtons"]
@@ -109,7 +103,7 @@ rect_clip_content = false
 mouse_filter = 0
 size_flags_horizontal = 1
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 4 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -131,7 +125,7 @@ rect_clip_content = false
 mouse_filter = 0
 size_flags_horizontal = 1
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 4 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -153,7 +147,7 @@ rect_clip_content = false
 mouse_filter = 0
 size_flags_horizontal = 1
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 4 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -176,7 +170,7 @@ rect_clip_content = false
 mouse_filter = 0
 size_flags_horizontal = 1
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 4 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -198,7 +192,7 @@ rect_clip_content = false
 mouse_filter = 0
 size_flags_horizontal = 1
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 4 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -206,5 +200,33 @@ group = null
 text = "Exit"
 flat = false
 _sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="Panel" type="Panel" parent="."]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 400.0
+margin_top = 100.0
+margin_right = 800.0
+margin_bottom = 500.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[connection signal="pressed" from="MenuButtons/NewGame" to="MenuButtons" method="_on_NewGame_pressed"]
+
+[connection signal="pressed" from="MenuButtons/LoadGame" to="MenuButtons" method="_on_LoadGame_pressed"]
+
+[connection signal="pressed" from="MenuButtons/Settings" to="MenuButtons" method="_on_Settings_pressed"]
+
+[connection signal="pressed" from="MenuButtons/Credits" to="MenuButtons" method="_on_Credits_pressed"]
+
+[connection signal="pressed" from="MenuButtons/Exit" to="MenuButtons" method="_on_Exit_pressed"]
 
 
