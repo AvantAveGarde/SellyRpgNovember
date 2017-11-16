@@ -1,14 +1,14 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://Scripts/ActorCore.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/upleft.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/Down (2).png" type="Texture" id=3]
-[ext_resource path="res://Sprites/upright.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/downleft.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/left.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/Up.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/right (2).png" type="Texture" id=8]
-[ext_resource path="res://Sprites/downright.png" type="Texture" id=9]
+[ext_resource path="res://NPCs/Enemies/RangedEnemy.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Up.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/right (2).png" type="Texture" id=3]
+[ext_resource path="res://Sprites/left.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/downright.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/upright.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/upleft.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/downleft.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/EnemySprites/mage.png" type="Texture" id=9]
 [ext_resource path="res://Scripts/StateCore.gd" type="Script" id=10]
 
 [sub_resource type="SpriteFrames" id=1]
@@ -16,42 +16,42 @@
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "IdleNW",
+"name": "IdleN",
 "speed": 0.0
 }, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "IdleS",
+"name": "IdleE",
 "speed": 0.0
 }, {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
-"name": "IdleNE",
+"name": "IdleW",
 "speed": 0.0
 }, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
-"name": "IdleSW",
+"name": "IdleSE",
 "speed": 0.0
 }, {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
-"name": "IdleW",
+"name": "IdleNE",
 "speed": 0.0
 }, {
 "frames": [ ExtResource( 7 ) ],
 "loop": true,
-"name": "IdleN",
+"name": "IdleNW",
 "speed": 0.0
 }, {
 "frames": [ ExtResource( 8 ) ],
 "loop": true,
-"name": "IdleE",
+"name": "IdleSW",
 "speed": 0.0
 }, {
 "frames": [ ExtResource( 9 ) ],
 "loop": true,
-"name": "IdleSE",
+"name": "IdleS",
 "speed": 0.0
 } ]
 
@@ -60,20 +60,29 @@ animations = [ {
 custom_solver_bias = 0.0
 extents = Vector2( 21.7892, 26.659 )
 
+[sub_resource type="CircleShape2D" id=3]
+
+custom_solver_bias = 0.0
+radius = 10.0
+
 [node name="TestEnemy" type="KinematicBody2D"]
 
+position = Vector2( 548.91, 305.605 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 sprite = NodePath("Sprite")
 states_node = NodePath("States")
 default_state = "Idle"
 max_health = 10
 max_charges = 5
-faction = 1
-move_speed = 200
+faction = 2
+move_speed = 0
 armor = 0
 block = 3
 block_angle = 45
@@ -92,10 +101,28 @@ shape = SubResource( 2 )
 
 [node name="States" type="Node" parent="."]
 
+editor/display_folded = true
+
 [node name="Idle" type="Node" parent="States"]
 
 script = ExtResource( 10 )
 animation_name = "Idle"
 default_animation_name = "Idle"
+
+[node name="AggroRange" type="Area2D" parent="."]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AggroRange"]
+
+position = Vector2( -1.81424, 1.14435 )
+scale = Vector2( 12.8941, 12.8941 )
+shape = SubResource( 3 )
 
 

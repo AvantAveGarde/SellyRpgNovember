@@ -18,10 +18,7 @@ const heavy_attack_anim = "HeavyAttack"
 const ranged_attack_anim = "RangedAttack"
 const block_anim = "Block"
 
-#Movement Kinematic Variables
-const max_speed = 75
-const acceleration = 100
-const deceleration = 300
+const speed = 75
 
 var charge_time_attack = 0.0
 var charge_threshold_attack = 1.0
@@ -34,7 +31,7 @@ func _ready():
 
 func _process(delta):
 	current_state.process(delta)
-
+	
 func get_input():
 	var flags = 0x0
 	#movement
