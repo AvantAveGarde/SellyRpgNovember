@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 #export(Texture) var fire_texture
 #export(Texture) var water_texture
