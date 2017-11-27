@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Fonts/Munro.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/BlueColor.tres" type="StyleBox" id=2]
 [ext_resource path="res://UI/RedColor.tres" type="StyleBox" id=3]
 [ext_resource path="res://Scripts/MenuButtons.gd" type="Script" id=4]
+[ext_resource path="res://UI/Theme.tres" type="Theme" id=5]
+[ext_resource path="res://Scripts/CreditMenu.gd" type="Script" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -44,6 +46,14 @@ use_mipmaps = false
 use_filter = false
 font_data = ExtResource( 1 )
 _sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=5]
+
+size = 20
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 1 )
+_sections_unfolded = [ "Settings" ]
 
 [node name="TitleScreen" type="Node"]
 
@@ -97,7 +107,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 141.0
-margin_bottom = 48.0
+margin_bottom = 61.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -117,9 +127,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 52.0
+margin_top = 65.0
 margin_right = 141.0
-margin_bottom = 100.0
+margin_bottom = 126.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -135,6 +145,7 @@ flat = false
 
 [node name="Settings" type="Button" parent="MenuButtons"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -162,9 +173,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 156.0
+margin_top = 130.0
 margin_right = 141.0
-margin_bottom = 204.0
+margin_bottom = 191.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -184,7 +195,7 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 208.0
+margin_top = 195.0
 margin_right = 141.0
 margin_bottom = 256.0
 rect_pivot_offset = Vector2( 0, 0 )
@@ -201,32 +212,133 @@ text = "Exit"
 flat = false
 _sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
-[node name="Panel" type="Panel" parent="."]
+[node name="CreditsPanel" type="Panel" parent="."]
 
+editor/display_folded = true
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 400.0
+margin_left = 312.0
 margin_top = 100.0
-margin_right = 800.0
+margin_right = 712.0
 margin_bottom = 500.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+theme = ExtResource( 5 )
+script = ExtResource( 6 )
+_sections_unfolded = [ "Theme" ]
+
+[node name="TopBar" type="Panel" parent="CreditsPanel"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 400.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/panel = ExtResource( 3 )
 _sections_unfolded = [ "Rect" ]
+
+[node name="Label" type="Label" parent="CreditsPanel/TopBar"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 400.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 5 )
+text = "Credits"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_fonts" ]
+
+[node name="Text" type="Label" parent="CreditsPanel"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 40.0
+margin_right = 400.0
+margin_bottom = 340.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 5 )
+text = "The game is made by the following people:
+- AvantAveGarde
+- Azure
+- Karob
+- MiraiHime
+- MythStorm24
+- PyroclasticMayhem
+- Yoshi"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_fonts" ]
+
+[node name="Exit" type="Button" parent="CreditsPanel"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 129.0
+margin_top = 335.0
+margin_right = 270.0
+margin_bottom = 374.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 3
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 2 )
+custom_styles/focus = ExtResource( 2 )
+custom_styles/disabled = ExtResource( 3 )
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = SubResource( 4 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Quit Menu"
+flat = false
+_sections_unfolded = [ "Theme", "custom_styles" ]
 
 [connection signal="pressed" from="MenuButtons/NewGame" to="MenuButtons" method="_on_NewGame_pressed"]
 
 [connection signal="pressed" from="MenuButtons/LoadGame" to="MenuButtons" method="_on_LoadGame_pressed"]
 
-[connection signal="pressed" from="MenuButtons/Settings" to="MenuButtons" method="_on_Settings_pressed"]
-
 [connection signal="pressed" from="MenuButtons/Credits" to="MenuButtons" method="_on_Credits_pressed"]
 
 [connection signal="pressed" from="MenuButtons/Exit" to="MenuButtons" method="_on_Exit_pressed"]
+
+[connection signal="pressed" from="CreditsPanel/Exit" to="CreditsPanel" method="_on_Exit_pressed"]
 
 
